@@ -1,11 +1,11 @@
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {width: 100%;
+body {
+    width: 100%;
     max-width: 100%;
     overflow-x: hidden;
     min-height: 100vh;
@@ -35,20 +35,35 @@ header .navigation {
     z-index: 10;
 }
 
-header .navigation .logo {
-    font-size: 40px;
-    font-weight: bold;
-    margin-left: 10px;
-    background: linear-gradient(
-        90deg,
-        #00eaff,
-        #7b2cff,
-        #ff2ea6
-    );
+.brand {
+    text-align: center;
+}
+
+.brand .title {
+    font-size: 42px;
+    font-weight: 800;
+    font-family: "Trebuchet MS", sans-serif;
+    letter-spacing: 2px;
+
+    background: linear-gradient(90deg,
+            #00eaff,
+            #5b7cff,
+            #b14cff,
+            #ff4fd8);
+
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    cursor: pointer;
+
+    text-shadow: 0 0 20px rgba(0, 234, 255, 0.25);
+}
+
+.brand .tagline {
+    margin-top: 2px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 header .navigation ul {
@@ -88,12 +103,10 @@ header .navigation ul li a::before {
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        rgba(0, 238, 255, 0.8) 0%,
-        rgba(123, 44, 255, 0.45) 40%,
-        transparent 70%
-    );
+    background: radial-gradient(circle,
+            rgba(0, 238, 255, 0.8) 0%,
+            rgba(123, 44, 255, 0.45) 40%,
+            transparent 70%);
     opacity: 0;
     z-index: -1;
     transition:
@@ -138,3 +151,16 @@ header .navigation ul li a:hover::after {
     width: 40%;
 }
 
+.title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: 10px;
+    background: linear-gradient(90deg,
+            #00eaff,
+            #7b2cff,
+            #ff2ea6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    cursor: pointer;
+}
