@@ -164,3 +164,373 @@ header .navigation ul li a:hover::after {
     color: transparent;
     cursor: pointer;
 }
+
+main {
+    width: 100%;
+}
+
+.hero {
+    position: relative;
+    min-height: 650px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    background-image: url("static/herobg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(5px);
+    transform: scale(1.05);
+    z-index: -2;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 8, 20, 0.62);
+    z-index: -1;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 850px;
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+.hero-tag {
+    margin-bottom: 20px;
+    color: #00eaff;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 5px;
+}
+
+.hero-content h1 {
+    margin-bottom: 20px;
+    font-size: 64px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-shadow: 0 5px 25px rgba(0, 0, 0, 0.8);
+}
+
+.hero-content h1 span {
+    background: linear-gradient(90deg,
+            #00eaff,
+            #7b2cff,
+            #ff2ea6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-content>p:not(.hero-tag) {
+    max-width: 650px;
+    margin: 0 auto 35px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 20px;
+    line-height: 1.7;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.8);
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.hero-buttons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 190px;
+    padding: 14px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.start-btn {
+    color: white;
+    background: linear-gradient(90deg,
+            #00cfff,
+            #7b2cff);
+    box-shadow: 0 0 20px rgba(0, 234, 255, 0.3);
+}
+
+.start-btn:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 0 25px rgba(0, 234, 255, 0.5),
+        0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.login-btn {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.login-btn:hover {
+    color: white;
+    background: rgba(0, 234, 255, 0.15);
+    border-color: #00eaff;
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px rgba(0, 234, 255, 0.25);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 600px;
+        padding: 60px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 44px;
+    }
+
+    .hero-tag {
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .hero-content>p:not(.hero-tag) {
+        font-size: 17px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .hero-buttons a {
+        width: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        min-height: 550px;
+        padding: 50px 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+    }
+
+    .hero-tag {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .hero-content>p:not(.hero-tag) {
+        font-size: 15px;
+    }
+}
+
+.hero {
+    position: relative;
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: -15px;
+
+    background-image: url("images/herobg.png");
+    background-size: cover;
+    background-position: center;
+
+    filter: blur(5px);
+    transform: scale(1.05);
+
+    z-index: -2;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: rgba(5, 8, 20, 0.60);
+
+    z-index: -1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+.image-frame {
+    width: 450px;
+    height: 300px;
+    padding: 6px;
+    border-radius: 30px;
+    background: linear-gradient(
+        135deg,
+        #00eaff,
+        #7b2cff,
+        #ff2ea6
+    );
+    box-shadow:
+        0 0 30px rgba(0, 234, 255, 0.25),
+        0 20px 50px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+.image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 25px;
+}
+.student-tour {
+    width: 100%;
+    padding: 100px 6%;
+    background: #080b18;
+    color: white;
+}
+
+.tour-heading {
+    max-width: 850px;
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+.tour-heading h2 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.tour-heading p {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.tour-cards {
+    width: 100%;
+    max-width: 1250px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.tour-card {
+    overflow: hidden;
+
+    background: #202127;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 10px;
+
+    transition: 0.4s ease;
+}
+
+.tour-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(0, 234, 255, 0.5);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.4),
+        0 0 25px rgba(0, 234, 255, 0.12);
+}
+
+.tour-image {
+    width: 100%;
+    height: 270px;
+    overflow: hidden;
+}
+
+.tour-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: 0.5s ease;
+}
+
+.tour-card:hover .tour-image img {
+    transform: scale(1.06);
+}
+
+.tour-info {
+    padding: 25px;
+}
+
+.tour-info h3 {
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+
+.tour-info p {
+    color: rgba(255, 255, 255, 0.6);
+
+    font-size: 16px;
+
+    line-height: 1.6;
+
+    margin: 0;
+}
+@media (max-width: 900px) {
+
+    .tour-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .student-tour {
+        padding: 70px 20px;
+    }
+
+    .tour-heading h2 {
+        font-size: 32px;
+    }
+
+    .tour-heading p {
+        font-size: 15px;
+    }
+
+    .tour-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .tour-image {
+        height: 240px;
+    }
+
+}
