@@ -690,139 +690,201 @@ main .student-tour {
 /* for medium size  phone */
 @media (max-width: 768px) {
 
-    body {
-        overflow-x: hidden;
-    }
-
     header {
-        padding: 10px 15px;
+        padding: 10px;
     }
 
     header .navigation {
-        padding: 12px 15px;
-        border-radius: 15px;
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
     }
 
-    header .navigation .logo {
+    header .navigation .logo img {
+        width: 150px;
+        height: auto;
+    }
+
+    header .navigation .brand {
+        text-align: center;
+    }
+
+    header .navigation .title {
         font-size: 28px;
     }
 
-    header .navigation ul {
-        gap: 3px;
+    header .navigation .tagline {
+        font-size: 12px;
     }
 
-    header .navigation ul li {
-        font-size: 14px;
+    header .navigation .info ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
     }
 
-    header .navigation ul li a {
-        padding: 8px 10px;
-    }
-
-
-    .student-tour {
-        padding: 70px 20px;
-    }
-
-    .tour-heading h2 {
-        font-size: 32px;
-    }
-
-    .tour-heading p {
+    header .navigation .info ul li {
         font-size: 15px;
     }
 
+    header .navigation .info ul li a {
+        padding: 8px 12px;
+    }
+
+    .hero {
+        min-height: 80vh;
+        padding: 30px 20px;
+    }
+
+    .hero-content {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 38px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .hero-buttons a {
+        width: 80%;
+        text-align: center;
+    }
+
+    .student-tour {
+        padding: 50px 15px;
+    }
+
+    .tour-heading h2 {
+        font-size: 30px;
+    }
+
+    .tour-heading p {
+        font-size: 14px;
+    }
+
     .tour-cards {
-        grid-template-columns: 1fr;
-        gap: 25px;
+        flex-direction: column;
+        align-items: center;
     }
 
     .tour-card {
         width: 100%;
+        max-width: 400px;
     }
 
-    .tour-image {
-        height: 240px;
+    .tour-image img {
+        width: 100%;
+        height: auto;
     }
-
 
     .leaderboard {
-        padding: 70px 15px;
+        padding: 50px 15px;
     }
 
     .leaderboard-heading h2 {
-        font-size: 32px;
+        font-size: 30px;
     }
 
-    .leaderboard-heading p:last-child {
-        font-size: 15px;
+    .leaderboard-box {
+        width: 100%;
+        overflow-x: auto;
     }
 
     .leaderboard-header,
     .leaderboard-row {
-        grid-template-columns: 55px 1fr 80px;
-        padding: 16px 12px;
+        min-width: 500px;
     }
 
-    .leaderboard-header div:last-child,
-    .leaderboard-row div:last-child {
-        display: none;
+    .login-container,
+    .register-container {
+        width: 100%;
+        padding: 15px;
     }
 
-    .leaderboard-list {
-        max-height: 455px;
+    .login-box,
+    .register-box {
+        width: 100%;
+        max-width: 420px;
+        padding: 25px 20px;
+    }
+
+    .login-logo,
+    .register-logo {
+        font-size: 35px;
+    }
+
+    .login-heading h1,
+    .register-heading h1 {
+        font-size: 28px;
+    }
+
+    .input-group input {
+        width: 100%;
+        font-size: 15px;
+    }
+
+    .login-button,
+    .register-button {
+        width: 100%;
     }
 
 }
-
 /* for small size phone */
 @media (max-width: 480px) {
 
-    header {
-        padding: 8px;
+    header .navigation .title {
+        font-size: 24px;
     }
 
-    header .navigation {
-        padding: 10px;
+    header .navigation .tagline {
+        font-size: 10px;
     }
 
-    header .navigation .logo {
-        font-size: 22px;
+    header .navigation .info ul {
+        gap: 2px;
     }
 
-    header .navigation ul {
-        gap: 0;
+    header .navigation .info ul li a {
+        padding: 7px 9px;
+        font-size: 13px;
     }
 
-    header .navigation ul li {
-        font-size: 12px;
+    .hero-content h1 {
+        font-size: 30px;
     }
 
-    header .navigation ul li a {
-        padding: 7px 6px;
+    .hero-content p {
+        font-size: 14px;
+    }
+
+    .hero-buttons a {
+        width: 95%;
     }
 
     .tour-heading h2,
     .leaderboard-heading h2 {
-        font-size: 28px;
+        font-size: 25px;
     }
 
-    .tour-image {
-        height: 210px;
+    .login-box,
+    .register-box {
+        padding: 20px 15px;
     }
 
-    .tour-info {
-        padding: 20px;
-    }
-
-    .tour-info h3 {
-        font-size: 21px;
-    }
-
-    .leaderboard-header,
-    .leaderboard-row {
-        grid-template-columns: 45px 1fr 65px;
-        font-size: 13px;
+    .login-logo,
+    .register-logo {
+        font-size: 30px;
     }
 
 }
