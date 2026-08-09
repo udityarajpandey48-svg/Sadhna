@@ -9,255 +9,101 @@
 </head>
 
 <body>
-
-    <div class="register-page">
+<div class="register-page">
         <div class="background-glow glow-one"></div>
-        <div class="background-glow glow-two"></div>
-
+    <div class="background-glow glow-two"></div>
         <div class="register-container">
+            <div class="register-logo">SADHANA</div>
+            <p class="register-tag">DISCIPLINE • LEARNING • GROWTH</p>
 
-            <div class="register-logo">
-                SADHANA
-            </div>
-
-            <p class="register-tag">
-                DISCIPLINE • LEARNING • GROWTH
-            </p>
-
-            <div class="register-box">
-
-                <div class="register-heading">
-
+         <div class="register-box">
+               <div class="register-heading">
                     <h1>Create Account</h1>
-
-                    <p>
-                        Hare krishna
-                    </p>
-
+                    <p>Hare Krishna</p>
                 </div>
 
-
-                <form>
+               <form>
+                    <div class="input-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" placeholder="Enter your full name" required>
+                 </div>
 
                     <div class="input-group">
-
-                        <label for="fullname">
-                            Full Name
-                        </label>
-
-                        <input
-                            type="text"
-                            id="fullname"
-                            placeholder="Enter your full name"
-                            required
-                        >
-
-                    </div>
-
+                        <label for="studentid">Create Student ID</label>
+                        <input type="text" id="studentid" placeholder="Create Student ID" required>
+                 </div>
 
                     <div class="input-group">
-
-                        <label for="studentid">
-                           Create Student ID
-                        </label>
-
-                        <input
-                            type="text"
-                            id="studentid"
-                            placeholder="Create Student ID"
-                            required
-                        >
-
-                    </div>
-
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
 
                     <div class="input-group">
-
-                        <label for="email">
-                            Email Address
-                        </label>
-
-                        <input
-                            type="email"
-                            id="email"
-                            placeholder="Enter your email"
-                            required
-                        >
-
-                    </div>
-
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="Enter your phone number">
+                   </div>
 
                     <div class="input-group">
-
-                        <label for="phone">
-                            Phone Number
-                        </label>
-
-                        <input
-                            type="tel"
-                            id="phone"
-                            placeholder="Enter your phone number"
-                        >
-
-                    </div>
-
-
-                    <div class="input-group">
-
-                        <label for="password">
-                            Password
-                        </label>
-
+                        <label for="password">Password</label>
                         <div class="password-box">
-
-                            <input
-                                type="password"
-                                id="password"
-                                placeholder="Create a password"
-                                required
-                            >
-
-                            <button
-                                type="button"
-                                id="togglePassword"
-                            >
-                                👁
-                            </button>
-
+                            <input type="password" id="password" placeholder="Create a password" required>
+                            <button type="button" id="togglePassword">👁</button>
                         </div>
-
-                    </div>
-
+                </div>
 
                     <div class="input-group">
-
-                        <label for="confirm-password">
-                            Confirm Password
-                        </label>
-
+                        <label for="confirm-password">Confirm Password</label>
                         <div class="password-box">
-
-                            <input
-                                type="password"
-                                id="confirm-password"
-                                placeholder="Confirm your password"
-                                required
-                            >
-
-                            <button
-                                type="button"
-                                id="toggleConfirmPassword"
-                            >
-                                👁
-                            </button>
-
+                            <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+                            <button type="button" id="toggleConfirmPassword">👁</button>
                         </div>
-
-                    </div>
-
+                 </div>
 
                     <label class="terms">
-
-                        <input
-                            type="checkbox"
-                            required
-                        >
-
-                        <span>
-                            I agree to the
-                            <a href="#">Terms & Conditions</a>
-                        </span>
-
+                        <input type="checkbox" required>
+                        <span>I agree to the <a href="#">Terms & Conditions</a></span>
                     </label>
 
-
-                    <button
-                        type="submit"
-                        class="register-button"
-                    >
-                        CREATE ACCOUNT
-                    </button>
-
-                </form>
-
+                    <button type="submit" class="register-button">CREATE ACCOUNT</button>
+              </form>
 
                 <div class="login-section">
-
-                    <p>
-                        Already have an account?
-
-                        <a href="login.html">
-                            Login
-                        </a>
-                    </p>
-
+                    <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
                 </div>
-
-
-                <div class="back-home">
-
-                    <a href="index.html">
-                        ← Back to Home
-                    </a>
-
-                </div>
-
-            </div>
-
+             <div class="back-home">
+                    <a href="{{ url_for('home') }}">← Back to Home</a>
         </div>
-
-    </div>
-
+ </div>
+</div>
+</div>
 
     <script>
+        const password = document.getElementById("password");
+        const togglePassword = document.getElementById("togglePassword");
 
-        const password =
-            document.getElementById("password");
+    togglePassword.addEventListener("click", function () {
+        if (password.type === "password") {
+            password.type = "text";
+            togglePassword.textContent = "🙈";
+        } else {
+            password.type = "password";
+            togglePassword.textContent = "👁";
+        }
+    });
 
-        const togglePassword =
-            document.getElementById("togglePassword");
+        const confirmPassword = document.getElementById("confirm-password");
+        const toggleConfirmPassword = document.getElementById("toggleConfirmPassword");
 
-        togglePassword.addEventListener("click", function () {
-
-            if (password.type === "password") {
-
-                password.type = "text";
-                togglePassword.textContent = "🙈";
-
-            } else {
-
-                password.type = "password";
-                togglePassword.textContent = "👁";
-
-            }
-
-        });
-
-
-        const confirmPassword =
-            document.getElementById("confirm-password");
-
-        const toggleConfirmPassword =
-            document.getElementById("toggleConfirmPassword");
-
-        toggleConfirmPassword.addEventListener("click", function () {
-
-            if (confirmPassword.type === "password") {
-
-                confirmPassword.type = "text";
-                toggleConfirmPassword.textContent = "🙈";
-
-            } else {
-
-                confirmPassword.type = "password";
-                toggleConfirmPassword.textContent = "👁";
-
-            }
-
-        });
-
-    </script>
-
+    toggleConfirmPassword.addEventListener("click", function () {
+        if (confirmPassword.type === "password") {
+            confirmPassword.type = "text";
+            toggleConfirmPassword.textContent = "🙈";
+        } else {
+            confirmPassword.type = "password";
+            toggleConfirmPassword.textContent = "👁";
+        }
+    });
+</script>
 </body>
 
 </html>

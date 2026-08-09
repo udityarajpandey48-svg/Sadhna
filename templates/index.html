@@ -8,34 +8,49 @@
 
 <body>
     <header>
+
         <div class="navigation">
-            <span class="logo"><img src="/static/images/voice.jpg" alt="" height="65px" width="200px"></span>
-            <!-- <div class="logo">
-                Sadhana
-            </div> -->
+
+            <span class="logo">
+                <img src="{{ url_for('static', filename='images/voice.jpg') }}" alt="Sadhana" height="65" width="200">
+            </span>
+
             <div class="brand">
                 <div class="title">Sadhana</div>
-                <div class="tagline">discipline • obedient • self-control (DOS) </div>
+                <div class="tagline">discipline • obedient • self-control (DOS)</div>
             </div>
+
             <div class="info">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="login.html">Login</a></li>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
                 </ul>
             </div>
-        </div>
 
+        </div>
     </header>
 
+
+
+
+
+
+
     <main>
+
         <section class="hero">
 
             <div class="hero-content">
-                <p class="hero-tag">DISCIPLINE • LEARNING • GROWTH</p>
 
-                <h1>Welcome to <span>Sadhana</span></h1>
+                <p class="hero-tag">
+                    DISCIPLINE • LEARNING • GROWTH
+                </p>
+
+                <h1>
+                    Welcome to <span>Sadhana</span>
+                </h1>
 
                 <p>
                     Develop discipline, improve your knowledge,
@@ -43,38 +58,58 @@
                 </p>
 
                 <div class="hero-buttons">
-                    <a href="#" class="start-btn">Start Your Journey</a>
-                    <a href="login.html" class="login-btn">Student Login</a>
+
+                    <a href="#" class="start-btn">
+                        Start Your Journey
+                    </a>
+
+                    <a href="{{ url_for('login') }}" class="login-btn">
+                        Student Login
+                    </a>
+
                 </div>
+
             </div>
 
         </section>
+
+
         <section class="student-tour">
 
             <div class="tour-heading">
-                <h2>Explore the Student Journey</h2>
+
+                <h2>
+                    Explore the Student Journey
+                </h2>
 
                 <p>
                     Discover the learning environment, activities, and
                     experiences that make student life at Sadhana meaningful.
                 </p>
+
             </div>
+
 
             <div class="tour-cards">
 
                 <div class="tour-card">
 
                     <div class="tour-image">
-                        <img src="/static/images/sec2mayapur.png" alt="Students Learning">
+
+                        <img src="{{ url_for('static', filename='images/sec2mayapur.png') }}" alt="Mayapur">
+
                     </div>
 
                     <div class="tour-info">
+
                         <h3>Mayapur</h3>
 
                         <p>
-                            Mayapur is a major spiritual town in West Bengal, India, located 130 km north of Kolkata on
-                            the banks of the Ganges
+                            Mayapur is a major spiritual town in West Bengal,
+                            India, located 130 km north of Kolkata on the banks
+                            of the Ganges.
                         </p>
+
                     </div>
 
                 </div>
@@ -83,15 +118,20 @@
                 <div class="tour-card">
 
                     <div class="tour-image">
-                        <img src="/static/images/sec2puri.png" alt="Students Studying">
+
+                        <img src="{{ url_for('static', filename='images/sec2puri.png') }}" alt="Puri">
+
                     </div>
 
                     <div class="tour-info">
+
                         <h3>Puri</h3>
 
                         <p>
-                            A famous coastal temple town in Odisha, India, located about 60 km south of Bhubaneswar
+                            A famous coastal temple town in Odisha, India,
+                            located about 60 km south of Bhubaneswar.
                         </p>
+
                     </div>
 
                 </div>
@@ -100,15 +140,20 @@
                 <div class="tour-card">
 
                     <div class="tour-image">
-                        <img src="/static/images/sec2kritan.png" alt="Student Activities">
+
+                        <img src="{{ url_for('static', filename='images/sec2kritan.png') }}" alt="Dancing Kritan">
+
                     </div>
 
                     <div class="tour-info">
+
                         <h3>Dancing Kritan</h3>
 
-                        <p>Joyful, sacred practice of singing and dancing to holy names
-
+                        <p>
+                            Joyful, sacred practice of singing and dancing
+                            to holy names.
                         </p>
+
                     </div>
 
                 </div>
@@ -116,85 +161,111 @@
             </div>
 
         </section>
-        <section>
-            <section class="leaderboard">
 
-                <div class="leaderboard-heading">
-                    <p>COMPETE • ACHIEVE • GROW</p>
-                    <h2>🏆 Student <span>Leaderboard</span></h2>
-                    <p>
-                        See how students are progressing and celebrate
-                        their achievements.
-                    </p>
-                </div>
 
-                <div class="leaderboard-box">
+        <section class="leaderboard">
 
-                    <div class="leaderboard-header">
-                        <div>Rank</div>
-                        <div>Student</div>
-                        <div>Points</div>
-                        <div>Level</div>
-                    </div>
-                    <div class="leaderboard-list">
-                        <div class="leaderboard-row top-one">
-                            <div>🥇</div>
-                            <div class="student-name">yash pr</div>
-                            <div>950</div>
-                            <div>Gold</div>
-                        </div>
+            <div class="leaderboard-heading">
 
-                        <div class="leaderboard-row top-two">
-                            <div>🥇</div>
-                            <div class="student-name">amrit pr</div>
-                            <div>890</div>
-                            <div>Gold</div>
-                        </div>
+                <p>
+                    COMPETE • ACHIEVE • GROW
+                </p>
 
-                        <div class="leaderboard-row top-three">
-                            <div>🥇</div>
-                            <div class="student-name">naveen pr</div>
-                            <div>840</div>
-                            <div>Gold</div>
-                        </div>
+                <h2>
+                    🏆 Student <span>Leaderboard</span>
+                </h2>
 
-                        <div class="leaderboard-row">
-                            <div>🥈</div>
-                            <div class="student-name">rishu pr</div>
-                            <div>790</div>
-                            <div>Silver</div>
-                        </div>
+                <p>
+                    See how students are progressing and celebrate
+                    their achievements.
+                </p>
 
-                        <div class="leaderboard-row">
-                            <div>🥈</div>
-                            <div class="student-name">sonu pr</div>
-                            <div>720</div>
-                            <div>Silver</div>
-                        </div>
-                        <div class="leaderboard-row">
-                            <div>🥉</div>
-                            <div class="student-name">rishab pr</div>
-                            <div>600</div>
-                            <div>Bronze</div>
-                        </div>
-                        <div class="leaderboard-row">
-                            <div>🥉</div>
-                            <div class="student-name">uditya pr</div>
-                            <div>600</div>
-                            <div>Bronze</div>
-                        </div>
-                        <div class="leaderboard-row">
-                            <div>8</div>
-                            <div class="student-name">unknown pr</div>
-                            <div>560</div>
-                            <div>🏅</div>
-                        </div>
-                    </div>
+            </div>
+
+
+            <div class="leaderboard-box">
+
+                <div class="leaderboard-header">
+
+                    <div>Rank</div>
+                    <div>Student</div>
+                    <div>Points</div>
+                    <div>Level</div>
 
                 </div>
 
-            </section>
+
+                <div class="leaderboard-list">
+
+                    <div class="leaderboard-row top-one">
+                        <div>🥇</div>
+                        <div class="student-name">Yash Pr</div>
+                        <div>950</div>
+                        <div>Gold</div>
+                    </div>
+
+
+                    <div class="leaderboard-row top-two">
+                        <div>🥈</div>
+                        <div class="student-name">Amrit Pr</div>
+                        <div>890</div>
+                        <div>Gold</div>
+                    </div>
+
+
+                    <div class="leaderboard-row top-three">
+                        <div>🥉</div>
+                        <div class="student-name">Naveen Pr</div>
+                        <div>840</div>
+                        <div>Gold</div>
+                    </div>
+
+
+                    <div class="leaderboard-row">
+                        <div>4</div>
+                        <div class="student-name">Rishu Pr</div>
+                        <div>790</div>
+                        <div>Silver</div>
+                    </div>
+
+
+                    <div class="leaderboard-row">
+                        <div>5</div>
+                        <div class="student-name">Sonu Pr</div>
+                        <div>720</div>
+                        <div>Silver</div>
+                    </div>
+
+
+                    <div class="leaderboard-row">
+                        <div>6</div>
+                        <div class="student-name">Rishab Pr</div>
+                        <div>600</div>
+                        <div>Bronze</div>
+                    </div>
+
+
+                    <div class="leaderboard-row">
+                        <div>7</div>
+                        <div class="student-name">Uditya Pr</div>
+                        <div>600</div>
+                        <div>Bronze</div>
+                    </div>
+
+
+                    <div class="leaderboard-row">
+                        <div>8</div>
+                        <div class="student-name">Unknown Pr</div>
+                        <div>560</div>
+                        <div>🏅</div>
+                    </div>
+
+                </div>
+
+            </div>
+
         </section>
+
     </main>
     <footer>
 
