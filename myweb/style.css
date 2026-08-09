@@ -686,3 +686,143 @@ main .student-tour {
     background-color: #0e18373f;
 
 }
+
+/* for medium size  phone */
+@media (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    header {
+        padding: 10px 15px;
+    }
+
+    header .navigation {
+        padding: 12px 15px;
+        border-radius: 15px;
+    }
+
+    header .navigation .logo {
+        font-size: 28px;
+    }
+
+    header .navigation ul {
+        gap: 3px;
+    }
+
+    header .navigation ul li {
+        font-size: 14px;
+    }
+
+    header .navigation ul li a {
+        padding: 8px 10px;
+    }
+
+
+    .student-tour {
+        padding: 70px 20px;
+    }
+
+    .tour-heading h2 {
+        font-size: 32px;
+    }
+
+    .tour-heading p {
+        font-size: 15px;
+    }
+
+    .tour-cards {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .tour-card {
+        width: 100%;
+    }
+
+    .tour-image {
+        height: 240px;
+    }
+
+
+    .leaderboard {
+        padding: 70px 15px;
+    }
+
+    .leaderboard-heading h2 {
+        font-size: 32px;
+    }
+
+    .leaderboard-heading p:last-child {
+        font-size: 15px;
+    }
+
+    .leaderboard-header,
+    .leaderboard-row {
+        grid-template-columns: 55px 1fr 80px;
+        padding: 16px 12px;
+    }
+
+    .leaderboard-header div:last-child,
+    .leaderboard-row div:last-child {
+        display: none;
+    }
+
+    .leaderboard-list {
+        max-height: 455px;
+    }
+
+}
+
+/* for small size phone */
+@media (max-width: 480px) {
+
+    header {
+        padding: 8px;
+    }
+
+    header .navigation {
+        padding: 10px;
+    }
+
+    header .navigation .logo {
+        font-size: 22px;
+    }
+
+    header .navigation ul {
+        gap: 0;
+    }
+
+    header .navigation ul li {
+        font-size: 12px;
+    }
+
+    header .navigation ul li a {
+        padding: 7px 6px;
+    }
+
+    .tour-heading h2,
+    .leaderboard-heading h2 {
+        font-size: 28px;
+    }
+
+    .tour-image {
+        height: 210px;
+    }
+
+    .tour-info {
+        padding: 20px;
+    }
+
+    .tour-info h3 {
+        font-size: 21px;
+    }
+
+    .leaderboard-header,
+    .leaderboard-row {
+        grid-template-columns: 45px 1fr 65px;
+        font-size: 13px;
+    }
+
+}

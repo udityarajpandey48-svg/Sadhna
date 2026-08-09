@@ -1,14 +1,21 @@
-from flask import Flask, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return send_from_directory("myweb", "index.html")
+    return render_template("index.html")
 
-@app.route("/<path:filename>")
-def files(filename):
-    return send_from_directory("myweb", filename)
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+
+@app.route("/register")
+def register():
+    return render_template("register.html")
+
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
