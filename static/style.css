@@ -185,7 +185,7 @@ main {
     content: "";
     position: absolute;
     inset: -20px;
-    background-image: url("static/herobg.png");
+    background-image: url("images/herobg.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
