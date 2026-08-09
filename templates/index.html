@@ -19,10 +19,10 @@
             </div>
             <div class="info">
                 <ul>
-                    <li><a href="/templates/index.html">Home</a></li>
-                    <li><a href="/templates/about.html">About</a></li>
-                    <li><a href="/templates/contact.html">Contact</a></li>
-                    <li><a href="/templates/login.html">Login</a></li>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -44,7 +44,7 @@
 
                 <div class="hero-buttons">
                     <a href="#" class="start-btn">Start Your Journey</a>
-                    <a href="/templates/login.html" class="login-btn">Student Login</a>
+                    <a href="{{ url_for('login') }}" class="login-btn">Student Login</a>
                 </div>
             </div>
 
