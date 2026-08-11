@@ -83,7 +83,7 @@ def register():
         db.session.add(student)
         db.session.commit()
         
-    return redirect(url_for("login"))
+        return redirect(url_for("login"))
 
 
 
