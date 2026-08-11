@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template , Request , redirect ,url_for
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy 
 from werkzeug.security import generate_password_hash , check_password_hash
 
@@ -9,15 +9,15 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY" , "dev-secret")
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-db = SQLALchemy(app)
+db = SQLAlchemy(app)
 
-class Student(db.model):
-    id = db.collumn(db.integer , primary_key = TRUE)
-    fullname = db.collumn(db.string(100), nullable = FALSE)
-    studentid = db.coliumn(db.string(20), nullable = false , unique=True)
-    email = db.collumn(db.string(100) ,nullable = false , unique = true)
-    phone = db.collumn(db.string(20))
-    password = db.collumn(db.string(200) , nullable = false)
+class Student(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    fullname = db.Column(db.String(100), nullable=False)
+    studentid = db.Column(db.String(20), nullable=False, unique=True)
+    email = db.Column(db.String(100), nullable=False, unique=True)
+    phone = db.Column(db.String(20))
+    password = db.Column(db.String(200), nullable=False)
 
 
 with app.app_context():
