@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template , Request , redirect ,url_for
-from flask_sqlalchemy import SQLALchemy 
+from flask_sqlalchemy import SQLAlchemy 
 from werkzeug.security import generate_password_hash , check_password_hash
 
 app = Flask(__name__)
@@ -43,7 +43,7 @@ def login():
 
             return f"welcome {student.fullname}"
         return "invalid student id or password"
-        
+
     return render_template("login.html")
 
 
