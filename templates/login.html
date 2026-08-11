@@ -30,18 +30,18 @@
                 <p>Hare Krishna</p>
             </div>
 
-            <form>
+            <form method="POST"  action="{{ url_for('login') }}">
 
                 <div class="input-group">
                     <label for="id">Student ID</label>
-                    <input type="text" id="id" placeholder="Enter your Student ID" required>
+                    <input type="text" id="id" name="studentid" placeholder="Enter your Student ID" required>
                 </div>
 
                 <div class="input-group">
                     <label for="password">Password</label>
 
                     <div class="password-box">
-                        <input type="password" id="password" placeholder="Enter your password" required>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
                         <button type="button" id="togglePassword">👁</button>
                     </div>
                 </div>

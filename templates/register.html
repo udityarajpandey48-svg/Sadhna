@@ -22,31 +22,31 @@
                     <p>Hare Krishna</p>
                 </div>
 
-               <form>
+               <form method="post" action="{{ url_for('register')}}">
                     <div class="input-group">
                         <label for="fullname">Full Name</label>
-                        <input type="text" id="fullname" placeholder="Enter your full name" required>
+                        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
                  </div>
 
                     <div class="input-group">
                         <label for="studentid">Create Student ID</label>
-                        <input type="text" id="studentid" placeholder="Create Student ID" required>
+                        <input type="text" id="studentid" name="studentid" placeholder="Create Student ID" required>
                  </div>
 
                     <div class="input-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" placeholder="Enter your email" required>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
                 </div>
 
                     <div class="input-group">
                         <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" placeholder="Enter your phone number">
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
                    </div>
 
                     <div class="input-group">
                         <label for="password">Password</label>
                         <div class="password-box">
-                            <input type="password" id="password" placeholder="Create a password" required>
+                            <input type="password" id="password" name="password" placeholder="Create a password" required>
                             <button type="button" id="togglePassword">👁</button>
                         </div>
                 </div>
@@ -54,13 +54,13 @@
                     <div class="input-group">
                         <label for="confirm-password">Confirm Password</label>
                         <div class="password-box">
-                            <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+                            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
                             <button type="button" id="toggleConfirmPassword">👁</button>
                         </div>
                  </div>
 
                     <label class="terms">
-                        <input type="checkbox" required>
+                        <input type="checkbox" name="terms" required>
                         <span>I agree to the <a href="#">Terms & Conditions</a></span>
                     </label>
 
