@@ -23,11 +23,17 @@ class Student(db.Model):
 with app.app_context():
     db.create_all()
 
-
+class score(db.model):
+    __tanlename__ = "score"
+    id = db.Column(db.Integer, primary_key=True)
+    studentid = db.Column(db.String(20), db.ForeignKey("student.studentid"))
+    score = db.Column(db.Integer)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    leaderboard = db.session.query(Student , Score).join(Score , Student.studentid == score.studentid).order_by(score.score.desc()).all()
+
+    return render_template("index.html", leaderboard=leaderboard)
 
 
 @app.route("/login" , methods=["GET" , "POST"])
