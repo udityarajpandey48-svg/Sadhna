@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Sadhana profile</title>
+    <link rel="stylesheet" href="/static/d.css">
+</head>
+
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-symbol">☸</div>
+                <div>
+                    <div class="brand-name">SADHANA</div>
+                    <div class="brand-subtitle">A Step Towards Krishna</div>
+                </div>
+            </div>
+            <nav class="navigation">
+                <a href="{{ url_for('profile') }}" class="nav-item active"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
+                <a href="{{ url_for('adddailysadhana') }}" class="nav-item"><span class="nav-icon">⊕</span><span>Add Daily Sadhana</span></a>
+                <a href="#" class="nav-item"><span class="nav-icon">☆</span><span>My Points</span></a>
+                <a href="#" class="nav-item"><span class="nav-icon">▥</span><span>Weekly Progress</span></a>
+                <a href="#" class="nav-item"><span class="nav-icon">◴</span><span>History</span></a>
+                <a href="#" class="nav-item"><span class="nav-icon">▤</span><span>Reports</span></a>
+                <a href="#" class="nav-item"><span class="nav-icon">♜</span><span>Achievements</span></a>
+                <a href="#" class="nav-item"><span class="nav-icon">♙</span><span>Profile</span></a>
+                <a href="#" class="nav-item"><span class="nav-icon">⚙</span><span>Settings</span></a>
+                <a href="#" class="nav-item"><span class="nav-icon">◯</span><span>Logout</span></a>
+            </nav>
+            <div class="current-week">
+                <div class="week-title">▣ <span>Current Week</span></div>
+                <div class="week-date">12 May - 18 May 2025</div>
+                <div class="week-days">
+                    <div><span>M</span><i class="done">✓</i></div>
+                    <div><span>T</span><i class="done">✓</i></div>
+                    <div><span>W</span><i class="today">W</i></div>
+                    <div><span>T</span><i class="done">✓</i></div>
+                    <div><span>F</span><i class="done">✓</i></div>
+                    <div><span>S</span><i class="done">✓</i></div>
+                    <div><span>S</span><i class="empty"></i></div>
+                </div>
+            </div>
+            <div class="keep-going">
+                <h3>Keep Going! 🚀</h3>
+                <p>Consistency is the key to spiritual progress.</p>
+                <div class="yellow-line"></div>
+                <div class="peacock">🦚</div>
+            </div>
+        </aside>
+        <div class="sidebar-overlay"></div>
+        <main class="main">
+            <header class="topbar">
+                <div class="top-left">
+                    <button class="menu-button">☰</button>
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="top-right">
+                    <div class="user-profile">
+                        <div class="user-avatar">UR</div>
+                        <div class="user-details">
+                            <strong>Hare Krishna, Uditya</strong>
+                            <small>id__</small>
+                        </div>
+                        <div class="user-arrow">⌄</div>
+                    </div>
+                </div>
+            </header>
+           
+
+
+
+    <script>
+        const menuButton = document.querySelector(".menu-button");
+        const sidebar = document.querySelector(".sidebar");
+        const main = document.querySelector(".main");
+
+        menuButton.addEventListener("click", function () {
+            sidebar.classList.toggle("hide-sidebar");
+            main.classList.toggle("expand-main");
+        });
+    </script>
+
+</body>
+
+</html>

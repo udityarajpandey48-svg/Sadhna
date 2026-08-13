@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Sadhana profile</title>
+    <link rel="stylesheet" href="/static/profile.css">
+</head>
+
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-symbol">☸</div>
+                <div>
+                    <div class="brand-name">SADHANA</div>
+                    <div class="brand-subtitle">A Step Towards Krishna</div>
+                </div>
+            </div>
+            <nav class="navigation">
+                <a href="{{ url_for('profile') }}" class="nav-item active"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
+                <a href="{{ url_for('adddailysadhana') }}" class="nav-item"><span class="nav-icon">⊕</span><span>Add Daily Sadhana</span></a>
+                <a href="#" class="nav-item"><span class="nav-icon">☆</span><span>My Points</span></a>
+                <a href="#" class="nav-item"><span class="nav-icon">▥</span><span>Weekly Progress</span></a>
+                <a href="#" class="nav-item"><span class="nav-icon">◴</span><span>History</span></a>
+                <a href="#" class="nav-item"><span class="nav-icon">▤</span><span>Reports</span></a>
+                <a href="#" class="nav-item"><span class="nav-icon">♜</span><span>Achievements</span></a>
+                <a href="#" class="nav-item"><span class="nav-icon">♙</span><span>Profile</span></a>
+                <a href="#" class="nav-item"><span class="nav-icon">⚙</span><span>Settings</span></a>
+                <a href="#" class="nav-item"><span class="nav-icon">◯</span><span>Logout</span></a>
+            </nav>
+            <div class="current-week">
+                <div class="week-title">▣ <span>Current Week</span></div>
+                <div class="week-date">12 May - 18 May 2025</div>
+                <div class="week-days">
+                    <div><span>M</span><i class="done">✓</i></div>
+                    <div><span>T</span><i class="done">✓</i></div>
+                    <div><span>W</span><i class="today">W</i></div>
+                    <div><span>T</span><i class="done">✓</i></div>
+                    <div><span>F</span><i class="done">✓</i></div>
+                    <div><span>S</span><i class="done">✓</i></div>
+                    <div><span>S</span><i class="empty"></i></div>
+                </div>
+            </div>
+            <div class="keep-going">
+                <h3>Keep Going! 🚀</h3>
+                <p>Consistency is the key to spiritual progress.</p>
+                <div class="yellow-line"></div>
+                <div class="peacock">🦚</div>
+            </div>
+        </aside>
+        <div class="sidebar-overlay"></div>
+        <main class="main">
+            <header class="topbar">
+                <div class="top-left">
+                    <button class="menu-button">☰</button>
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="top-right">
+                    <div class="user-profile">
+                        <div class="user-avatar">UR</div>
+                        <div class="user-details">
+                            <strong>Hare Krishna, Uditya</strong>
+                            <small>id__</small>
+                        </div>
+                        <div class="user-arrow">⌄</div>
+                    </div>
+                </div>
+            </header>
+            <div class="dashboard-content">
+                <section class="top-section">
+                    <div class="welcome-card">
+                        <div class="avatar-large">UR</div>
+                        <div class="welcome-info">
+                            <span>Welcome back,</span>
+                            <h2>Hare Krishna, user__ 🙏</h2>
+                            <strong>id__</strong>
+                            <p>"....."</p>
+                        </div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-card blue">
+                            <div class="stat-icon">🏆</div>
+                            <div class="stat-label">Total Points</div>
+                            <div class="stat-value">785</div>
+                            <div class="stat-bottom">/ 1000</div>
+                            <div class="stat-note">This Week</div>
+                        </div>
+                        <div class="stat-card green">
+                            <div class="stat-icon">◕</div>
+                            <div class="stat-label">Total %</div>
+                            <div class="stat-value">78.5%</div>
+                            <div class="stat-bottom">&nbsp;</div>
+                            <div class="stat-note">This Week</div>
+                        </div>
+                        <div class="stat-card purple">
+                            <div class="stat-icon">🎖</div>
+                            <div class="stat-label">Rank</div>
+                            <div class="stat-value">#4</div>
+                            <div class="stat-bottom">&nbsp;</div>
+                            <div class="stat-note">In Your Group</div>
+                        </div>
+                        <div class="stat-card orange">
+                            <div class="stat-icon">🔥</div>
+                            <div class="stat-label">Streak</div>
+                            <div class="stat-value">12</div>
+                            <div class="stat-bottom">&nbsp;</div>
+                            <div class="stat-note">Days</div>
+                        </div>
+                    </div>
+                </section>
+                <section class="main-grid">
+                    <div class="left-content">
+                        <div class="card daily-card">
+                            <div class="card-header">
+                                <div class="section-title"><span>▣</span>
+                                    <h2>DAILY SADHANA</h2>
+                                </div>
+                                <button class="history-button">▣ &nbsp; View Full History</button>
+                            </div>
+                            <div class="table-container">
+                                <table class="sadhana-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ACTIVITY</th>
+                                            <th>MAX</th>
+                                            <th>MON<br><small>12 May</small></th>
+                                            <th>TUE<br><small>13 May</small></th>
+                                            <th class="selected-day">WED<br><small>14 May</small></th>
+                                            <th>THU<br><small>15 May</small></th>
+                                            <th>FRI<br><small>16 May</small></th>
+                                            <th>SAT<br><small>17 May</small></th>
+                                            <th>SUN<br><small>18 May</small></th>
+                                            <th>WEEK TOTAL</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><span class="activity-icon">🌙</span>
+                                                <div><strong>NIDRA - To bed</strong><small>Before 9:30 pm</small></div>
+                                            </td>
+                                            <td>20</td>
+                                            <td class="good">20</td>
+                                            <td class="good">20</td>
+                                            <td class="good selected-day">20</td>
+                                            <td class="good">20</td>
+                                            <td class="good">20</td>
+                                            <td class="good">20</td>
+                                            <td class="good">20</td>
+                                            <td><strong>140</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="activity-icon">☀️</span>
+                                                <div><strong>NIDRA - Wake up</strong><small>Before 4:30 am</small></div>
+                                            </td>
+                                            <td>20</td>
+                                            <td class="good">20</td>
+                                            <td class="good">20</td>
+                                            <td class="good selected-day">20</td>
+                                            <td class="bad">15</td>
+                                            <td class="good">20</td>
+                                            <td class="good">20</td>
+                                            <td class="good">20</td>
+                                            <td><strong>135</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="activity-icon">🛏️</span>
+                                                <div><strong>NIDRA - Day Sleep</strong><small>30 min or less</small>
+                                                </div>
+                                            </td>
+                                            <td>20</td>
+                                            <td class="good">20</td>
+                                            <td class="good">20</td>
+                                            <td class="good selected-day">20</td>
+                                            <td class="bad">10</td>
+                                            <td class="good">20</td>
+                                            <td class="good">20</td>
+                                            <td class="good">20</td>
+                                            <td><strong>130</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="activity-icon">📿</span>
+                                                <div><strong>JAPA</strong><small>All rounds before 7:30 am</small></div>
+                                            </td>
+                                            <td>20</td>
+                                            <td class="good">20</td>
+                                            <td class="bad">15</td>
+                                            <td class="good selected-day">20</td>
+                                            <td class="bad">15</td>
+                                            <td class="good">20</td>
+                                            <td class="bad">15</td>
+                                            <td class="good">20</td>
+                                            <td><strong>125</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="activity-icon">🪔</span>
+                                                <div><strong>Mangal Arti</strong><small>Attend timely</small></div>
+                                            </td>
+                                            <td>20</td>
+                                            <td class="good">20</td>
+                                            <td class="good">20</td>
+                                            <td class="good selected-day">20</td>
+                                            <td class="good">20</td>
+                                            <td class="good">20</td>
+                                            <td class="good">20</td>
+                                            <td class="good">20</td>
+                                            <td><strong>140</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="activity-icon">📚</span>
+                                                <div><strong>Morning Class</strong><small>Attend & stay till end</small>
+                                                </div>
+                                            </td>
+                                            <td>20</td>
+                                            <td class="good">20</td>
+                                            <td class="good">20</td>
+                                            <td class="good selected-day">20</td>
+                                            <td class="good">20</td>
+                                            <td class="good">20</td>
+                                            <td class="good">20</td>
+                                            <td class="good">20</td>
+                                            <td><strong>140</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="activity-icon">📖</span>
+                                                <div><strong>SP Book Reading</strong><small>As per syllabus</small>
+                                                </div>
+                                            </td>
+                                            <td>10</td>
+                                            <td class="bad">10</td>
+                                            <td class="bad">10</td>
+                                            <td class="bad selected-day">10</td>
+                                            <td class="bad">10</td>
+                                            <td class="bad">10</td>
+                                            <td class="bad">10</td>
+                                            <td class="bad">10</td>
+                                            <td><strong>70</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="activity-icon">🧹</span>
+                                                <div><strong>Cleanliness</strong><small>Keeping attire / room
+                                                        clean</small></div>
+                                            </td>
+                                            <td>5</td>
+                                            <td class="good">5</td>
+                                            <td class="good">5</td>
+                                            <td class="good selected-day">5</td>
+                                            <td class="good">5</td>
+                                            <td class="good">5</td>
+                                            <td class="good">5</td>
+                                            <td class="good">5</td>
+                                            <td><strong>35</strong></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>TOTAL (DAILY SADHANA)</th>
+                                            <th>135</th>
+                                            <th>135</th>
+                                            <th>130</th>
+                                            <th class="selected-day">135</th>
+                                            <th>120</th>
+                                            <th>135</th>
+                                            <th>135</th>
+                                            <th>135</th>
+                                            <th class="total-green">935 / 1050</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="right-content">
+                        <div class="card summary-card">
+                            <h3>▥ &nbsp; WEEKLY SUMMARY</h3>
+                            <div class="summary-row"><span>Total Obtained</span><strong>935 / 1050</strong></div>
+                            <div class="summary-row"><span>Overall Percentage</span><strong
+                                    class="green-text">89.0%</strong></div>
+                            <div class="summary-row"><span>Grade</span><strong class="grade">A-</strong></div>
+                            <button class="download">⇩ &nbsp; Download Report</button>
+                        </div>
+                        <div class="card breakdown-card">
+                            <h3>POINTS BREAKDOWN</h3>
+                            <div><span>Daily Sadhana</span><strong>745 / 840</strong></div>
+                            <div><span>Study Seva</span><strong>190 / 210</strong></div>
+                            <hr>
+                            <div><span>Total Points</span><strong>935 / 1050</strong></div>
+                        </div>
+                        <div class="card recent-card">
+                            <h3>RECENT ACTIVITIES</h3>
+                            <div class="recent-item"><span>📗</span>
+                                <div><strong>Morning Class attended</strong><small>Today, 7:15 AM</small></div><b>+20
+                                    pts</b>
+                            </div>
+                            <div class="recent-item"><span>📗</span>
+                                <div><strong>Japa Completed</strong><small>Today, 6:45 AM</small></div><b>+20 pts</b>
+                            </div>
+                            <div class="recent-item"><span>📗</span>
+                                <div><strong>SP Book Reading</strong><small>Yesterday, 8:00 PM</small></div><b>+10
+                                    pts</b>
+                            </div>
+                            <a class="view-activities" href="#">View all activities　→</a>
+                        </div>
+                    </aside>
+                </section>
+            </div>
+        </main>
+    </div>
+
+
+
+    <script>
+        const menuButton = document.querySelector(".menu-button");
+        const sidebar = document.querySelector(".sidebar");
+        const main = document.querySelector(".main");
+
+        menuButton.addEventListener("click", function () {
+            sidebar.classList.toggle("hide-sidebar");
+            main.classList.toggle("expand-main");
+        });
+    </script>
+
+</body>
+
+</html>
