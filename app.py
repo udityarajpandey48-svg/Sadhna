@@ -94,13 +94,13 @@ def register():
 
     return render_template("register.html")
 
-@app.route("/profile")
-def profile():
-    return render_template("profile.html")
+@app.route("/userprofile")
+def userprofile():
+    return render_template("userprofile.html")
 
-@app.route("/adddailysadhana")
-def adddailysadhana():
-    return render_template("adddailysadhana.html")
+@app.route("/addsadhana")
+def addsadhana():
+    return render_template("addsadhana.html")
 
 if __name__ == "__main__":
     app.run()
