@@ -48,7 +48,7 @@ def login():
 
         if student and check_password_hash(student.password, password):
 
-            return f"welcome {student.fullname}"
+            return redirect(url_for("userprofile"))
         return "invalid student id or password"
 
     return render_template("login.html")
