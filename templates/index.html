@@ -167,9 +167,7 @@
 
             <div class="leaderboard-heading">
 
-                <p>
-                    COMPETE • ACHIEVE • GROW
-                </p>
+                <p>COMPETE • ACHIEVE • GROW</p>
 
                 <h2>
                     🏆 Student <span>Leaderboard</span>
@@ -182,83 +180,57 @@
 
             </div>
 
-
             <div class="leaderboard-box">
 
                 <div class="leaderboard-header">
-
                     <div>Rank</div>
                     <div>Student</div>
                     <div>Points</div>
                     <div>Level</div>
-
                 </div>
-
 
                 <div class="leaderboard-list">
 
-                    <div class="leaderboard-row top-one">
-                        <div>🥇</div>
-                        <div class="student-name">Yash Pr</div>
-                        <div>950</div>
-                        <div>Gold</div>
+                    {% for student, score in leaderboard %}
+
+                    <div
+                        class="leaderboard-row {% if loop.index == 1 %}top-one{% elif loop.index == 2 %}top-two{% elif loop.index == 3 %}top-three{% endif %}">
+
+                        <div>
+                            {% if loop.index == 1 %}
+                            🥇
+                            {% elif loop.index == 2 %}
+                            🥈
+                            {% elif loop.index == 3 %}
+                            🥉
+                            {% else %}
+                            {{ loop.index }}
+                            {% endif %}
+                        </div>
+
+                        <div class="student-name">
+                            {{ student.fullname }}
+                        </div>
+
+                        <div>
+                            {{ score.points }}
+                        </div>
+
+                        <div>
+                            {% if score.points >= 800 %}
+                            Gold
+                            {% elif score.points >= 650 %}
+                            Silver
+                            {% elif score.points >= 500 %}
+                            Bronze
+                            {% else %}
+                            🏅
+                            {% endif %}
+                        </div>
+
                     </div>
 
-
-                    <div class="leaderboard-row top-two">
-                        <div>🥈</div>
-                        <div class="student-name">Amrit Pr</div>
-                        <div>890</div>
-                        <div>Gold</div>
-                    </div>
-
-
-                    <div class="leaderboard-row top-three">
-                        <div>🥉</div>
-                        <div class="student-name">Naveen Pr</div>
-                        <div>840</div>
-                        <div>Gold</div>
-                    </div>
-
-
-                    <div class="leaderboard-row">
-                        <div>4</div>
-                        <div class="student-name">Rishu Pr</div>
-                        <div>790</div>
-                        <div>Silver</div>
-                    </div>
-
-
-                    <div class="leaderboard-row">
-                        <div>5</div>
-                        <div class="student-name">Sonu Pr</div>
-                        <div>720</div>
-                        <div>Silver</div>
-                    </div>
-
-
-                    <div class="leaderboard-row">
-                        <div>6</div>
-                        <div class="student-name">Rishab Pr</div>
-                        <div>600</div>
-                        <div>Bronze</div>
-                    </div>
-
-
-                    <div class="leaderboard-row">
-                        <div>7</div>
-                        <div class="student-name">Uditya Pr</div>
-                        <div>600</div>
-                        <div>Bronze</div>
-                    </div>
-
-
-                    <div class="leaderboard-row">
-                        <div>8</div>
-                        <div class="student-name">Unknown Pr</div>
-                        <div>560</div>
-                        <div>🏅</div>
-                    </div>
+                    {% endfor %}
 
                 </div>
 

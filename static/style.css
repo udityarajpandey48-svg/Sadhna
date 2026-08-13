@@ -556,8 +556,7 @@ main {
 }
 
 .leaderboard-list::-webkit-scrollbar-thumb {
-    background: linear-gradient(#00eaff,
-            #7b2cff);
+    background: linear-gradient(#00eaff, #7b2cff);
     border-radius: 10px;
 }
 
@@ -591,11 +590,7 @@ main {
 }
 
 .leaderboard-heading h2 span {
-    background: linear-gradient(90deg,
-            #00eaff,
-            #7b2cff,
-            #ff2ea6);
-
+    background: linear-gradient(90deg, #00eaff, #7b2cff, #ff2ea6);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -611,20 +606,13 @@ main {
     width: 100%;
     max-width: 1000px;
     margin: auto;
-
     overflow: hidden;
-
     border-radius: 20px;
-
     background: rgba(255, 255, 255, 0.06);
-
     border: 1px solid rgba(255, 255, 255, 0.15);
-
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-
-    box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
 }
 
 .leaderboard-header,
@@ -636,27 +624,18 @@ main {
 
 .leaderboard-header {
     padding: 20px 25px;
-
     background: rgba(0, 234, 255, 0.08);
-
     color: #00eaff;
-
     font-weight: 600;
-
     text-transform: uppercase;
-
     font-size: 13px;
-
     letter-spacing: 1px;
 }
 
 .leaderboard-row {
     padding: 20px 25px;
-
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-
     color: rgba(255, 255, 255, 0.85);
-
     transition: 0.3s ease;
 }
 
@@ -668,6 +647,9 @@ main {
 .student-name {
     font-weight: 600;
     color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .top-one {
@@ -681,6 +663,52 @@ main {
 .top-three {
     background: rgba(205, 127, 50, 0.06);
 }
+
+@media(max-width:700px) {
+
+    .leaderboard {
+        padding: 70px 15px;
+    }
+
+    .leaderboard-heading {
+        margin-bottom: 35px;
+    }
+
+    .leaderboard-heading h2 {
+        font-size: 30px;
+    }
+
+    .leaderboard-heading>p:first-child {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .leaderboard-heading p:last-child {
+        font-size: 14px;
+    }
+
+    .leaderboard-header,
+    .leaderboard-row {
+        grid-template-columns: 55px minmax(0, 1fr) 75px 70px;
+    }
+
+    .leaderboard-header {
+        padding: 15px 10px;
+        font-size: 10px;
+        letter-spacing: 0;
+    }
+
+    .leaderboard-row {
+        padding: 16px 10px;
+        font-size: 13px;
+    }
+
+    .student-name {
+        font-size: 13px;
+    }
+
+}
+
 
 main .student-tour {
     background-color: #0e18373f;
@@ -840,6 +868,7 @@ main .student-tour {
     }
 
 }
+
 /* for small size phone */
 @media (max-width: 480px) {
 
