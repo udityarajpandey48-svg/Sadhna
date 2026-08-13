@@ -185,7 +185,7 @@
                 <div class="leaderboard-header">
                     <div>Rank</div>
                     <div>Student</div>
-                    <div>Points</div>
+                    <div>score</div>
                     <div>Level</div>
                 </div>
 
@@ -213,15 +213,15 @@
                         </div>
 
                         <div>
-                            {{ score.points }}
+                            {{ score.score }}
                         </div>
 
                         <div>
-                            {% if score.points >= 800 %}
+                            {% if score.score >= 800 %}
                             Gold
-                            {% elif score.points >= 650 %}
+                            {% elif score.score >= 650 %}
                             Silver
-                            {% elif score.points >= 500 %}
+                            {% elif score.score >= 500 %}
                             Bronze
                             {% else %}
                             🏅

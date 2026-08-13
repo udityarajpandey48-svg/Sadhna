@@ -34,6 +34,7 @@ def home():
     leaderboard = db.session.query(Student , Score).join(Score , Student.studentid == Score.studentid).order_by(Score.score.desc()).all()
 
     return render_template("index.html", leaderboard=leaderboard)
+ 
 
 
 @app.route("/login" , methods=["GET" , "POST"])
