@@ -19,8 +19,10 @@
                 </div>
             </div>
             <nav class="navigation">
-                <a href="{{ url_for('userprofile') }}" class="nav-item active"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
-                <a href="{{ url_for('addsadhana') }}" class="nav-item"><span class="nav-icon">⊕</span><span>Add Daily Sadhana</span></a>
+                <a href="{{ url_for('userprofile') }}" class="nav-item active"><span
+                        class="nav-icon">⌂</span><span>Dashboard</span></a>
+                <a href="{{ url_for('addsadhana') }}" class="nav-item"><span class="nav-icon">⊕</span><span>Add Daily
+                        Sadhana</span></a>
                 <a href="#" class="nav-item"><span class="nav-icon">☆</span><span>My Points</span></a>
                 <a href="#" class="nav-item"><span class="nav-icon">▥</span><span>Weekly Progress</span></a>
                 <a href="#" class="nav-item"><span class="nav-icon">◴</span><span>History</span></a>
@@ -127,7 +129,7 @@
                                             <th>MAX</th>
                                             <th>MON <br class="selected-day"><small>12 May</small></th>
                                             <th>TUE<br><small>13 May</small></th>
-                                            <th >WED<br><small>14 May</small></th>
+                                            <th>WED<br><small>14 May</small></th>
                                             <th>THU<br><small>15 May</small></th>
                                             <th>FRI<br><small>16 May</small></th>
                                             <th>SAT<br><small>17 May</small></th>
@@ -138,7 +140,9 @@
                                     <tbody>
                                         <tr>
                                             <td><span class="activity-icon">🌙</span>
-                                                <div><strong>NIDRA - To bed</strong><small>Before 9:30 pm - 20,before 9:45 pm - 15, before 10:00 pm - 10, before 10:15 pm - 5</small></div>
+                                                <div><strong>NIDRA - To bed</strong><small>Before 9:30 pm - 20,before
+                                                        9:45 pm - 15, before 10:00 pm - 10, before 10:15 pm - 5</small>
+                                                </div>
                                             </td>
                                             <td>20</td>
                                             <td class="good ">20</td>
@@ -152,7 +156,9 @@
                                         </tr>
                                         <tr>
                                             <td><span class="activity-icon">☀️</span>
-                                                <div><strong>NIDRA - Wake up</strong><small>Before 3:30 am - 20, before 3:45 am - 15, before 4:00 am - 10, before 4:15 am - 5 , before 4:30 am - 0</small></div>
+                                                <div><strong>NIDRA - Wake up</strong><small>Before 3:30 am - 20, before
+                                                        3:45 am - 15, before 4:00 am - 10, before 4:15 am - 5 , before
+                                                        4:30 am - 0</small></div>
                                             </td>
                                             <td>20</td>
                                             <td class="good">20</td>
@@ -309,15 +315,19 @@
     </div>
 
 
-
     <script>
         const menuButton = document.querySelector(".menu-button");
         const sidebar = document.querySelector(".sidebar");
-        const main = document.querySelector(".main");
+        const overlay = document.querySelector(".sidebar-overlay");
 
-        menuButton.addEventListener("click", function () {
-            sidebar.classList.toggle("hide-sidebar");
-            main.classList.toggle("expand-main");
+        menuButton.addEventListener("click", () => {
+            sidebar.classList.toggle("show-sidebar");
+            overlay.classList.toggle("show-overlay");
+        });
+
+        overlay.addEventListener("click", () => {
+            sidebar.classList.remove("show-sidebar");
+            overlay.classList.remove("show-overlay");
         });
     </script>
 

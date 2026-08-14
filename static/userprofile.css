@@ -728,34 +728,41 @@ body {
 }
 
 @media (max-width: 435px) {
+
     .app {
-        width: 100%;
-        min-width: 0;
         display: block;
+        width: 100%;
+        overflow-x: hidden;
     }
 
+    /* Sidebar hidden by default */
     .sidebar {
         width: 253px;
-        transform: translateX(0);
-    }
-
-    .sidebar.hide-sidebar {
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
         transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1001;
     }
 
+    /* Show sidebar when menu is clicked */
     .sidebar.show-sidebar {
         transform: translateX(0);
     }
 
-    .main {
-        margin-left: 253px;
-        width: 100%;
-        min-width: 0;
+    /* Hide sidebar */
+    .sidebar.hide-sidebar {
+        transform: translateX(-100%);
     }
 
+    /* Main content always full width */
+    .main,
     .main.expand-main {
         margin-left: 0;
         width: 100%;
+        min-width: 0;
     }
 
     .topbar {
@@ -804,6 +811,7 @@ body {
         align-items: flex-start;
     }
 
+    /* Hide extra profile information on small screens */
     .user-details,
     .user-arrow {
         display: none;
@@ -813,7 +821,9 @@ body {
         min-width: 0;
     }
 
+    /* Allow only the table itself to scroll horizontally */
     .table-container {
+        width: 100%;
         max-width: 100%;
         overflow-x: auto;
     }
