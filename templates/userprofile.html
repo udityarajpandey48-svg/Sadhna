@@ -319,6 +319,7 @@
         const menuButton = document.querySelector(".menu-button");
         const sidebar = document.querySelector(".sidebar");
         const overlay = document.querySelector(".sidebar-overlay");
+        const closeButton = document.querySelector(".close-sidebar");
 
         menuButton.addEventListener("click", () => {
             sidebar.classList.toggle("show-sidebar");
@@ -326,6 +327,12 @@
         });
 
         overlay.addEventListener("click", () => {
+            sidebar.classList.remove("show-sidebar");
+            overlay.classList.remove("show-overlay");
+        })
+
+
+        closeButton.addEventListener("click", () => {
             sidebar.classList.remove("show-sidebar");
             overlay.classList.remove("show-overlay");
         });

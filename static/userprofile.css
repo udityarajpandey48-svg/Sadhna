@@ -702,6 +702,17 @@ body {
     text-decoration: underline;
 }
 
+.close-sidebar {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
 @media (max-width: 1200px) {
     .top-section {
         grid-template-columns: 1fr;
