@@ -319,11 +319,36 @@
     <script>
         const menuButton = document.querySelector(".menu-button");
         const sidebar = document.querySelector(".sidebar");
+        const main = document.querySelector(".main");
         const overlay = document.querySelector(".sidebar-overlay");
 
+        function isMobile() {
+            return window.innerWidth <= 435;
+        }
+
         menuButton.addEventListener("click", () => {
-            sidebar.classList.toggle("show-sidebar");
-            overlay.classList.toggle("show-overlay");
+            if (isMobile()) {
+                sidebar.classList.toggle("show-sidebar");
+                overlay.classList.toggle("show-overlay");
+            } else {
+                sidebar.classList.toggle("hide-sidebar");
+                main.classList.toggle("expand-main");
+            }
+        });
+
+        overlay.addEventListener("click", () => {
+            sidebar.classList.remove("show-sidebar");
+            overlay.classList.remove("show-overlay");
+        });
+
+        window.addEventListener("resize", () => {
+            if (!isMobile()) {
+                sidebar.classList.remove("show-sidebar");
+                overlay.classList.remove("show-overlay");
+            } else {
+                sidebar.classList.remove("hide-sidebar");
+                main.classList.remove("expand-main");
+            }
         });
     </script>
 

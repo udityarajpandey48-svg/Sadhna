@@ -35,6 +35,9 @@ body {
     transform: translateX(-100%);
 }
 
+
+
+
 .brand {
     display: flex;
     align-items: center;
@@ -191,13 +194,20 @@ body {
     width: calc(100% - 253px);
     min-height: 100vh;
     background: #f7f8fc;
-    transition: margin-left 0.3s ease, width 0.3s ease;
+    transition:
+        margin-left 0.3s ease,
+        width 0.3s ease;
 }
 
 .main.expand-main {
     margin-left: 0;
     width: 100%;
 }
+
+
+
+
+
 
 .topbar {
     height: 72px;
@@ -225,12 +235,13 @@ body {
 
 .menu-button {
     display: block;
-    border: 0;
+    border: none;
     background: transparent;
     font-size: 28px;
     color: #17345d;
     cursor: pointer;
 }
+
 
 .sidebar-overlay {
     display: none;
@@ -243,6 +254,7 @@ body {
 .sidebar-overlay.show-overlay {
     display: block;
 }
+
 
 .top-right {
     display: flex;
@@ -702,7 +714,65 @@ body {
     text-decoration: underline;
 }
 
+
+
+.sidebar {
+    width: 253px;
+    height: 100vh;
+    background: linear-gradient(180deg, #08182e, #082447);
+    color: #fff;
+    padding: 18px 16px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+    transform: translateX(0);
+}
+
+.sidebar.hide-sidebar {
+    transform: translateX(-100%);
+}
+
+.main {
+    margin-left: 253px;
+    width: calc(100% - 253px);
+    min-height: 100vh;
+    background: #f7f8fc;
+    transition:
+        margin-left 0.3s ease,
+        width 0.3s ease;
+}
+
+.main.expand-main {
+    margin-left: 0;
+    width: 100%;
+}
+
+.menu-button {
+    display: block;
+    border: none;
+    background: transparent;
+    font-size: 28px;
+    color: #17345d;
+    cursor: pointer;
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.sidebar-overlay.show-overlay {
+    display: block;
+}
+
 @media (max-width: 1200px) {
+
     .top-section {
         grid-template-columns: 1fr;
     }
@@ -718,6 +788,7 @@ body {
 }
 
 @media (max-width: 900px) {
+
     .stats {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -729,38 +800,31 @@ body {
 
 @media (max-width: 435px) {
 
+    body {
+        overflow-x: hidden;
+    }
+
     .app {
         display: block;
         width: 100%;
         min-height: 100vh;
-        overflow-x: hidden;
     }
 
-    /* Sidebar hidden by default */
     .sidebar {
         width: 253px;
-        height: 100vh;
         position: fixed;
         top: 0;
         left: 0;
-
+        height: 100vh;
         transform: translateX(-100%);
-
         transition: transform 0.3s ease;
         z-index: 1001;
     }
 
-    /* Show sidebar */
     .sidebar.show-sidebar {
         transform: translateX(0);
     }
 
-    /* Hide sidebar */
-    .sidebar.hide-sidebar {
-        transform: translateX(-100%);
-    }
-
-    /* Main content should take full screen */
     .main {
         margin-left: 0;
         width: 100%;
@@ -831,5 +895,9 @@ body {
         width: 100%;
         max-width: 100%;
         overflow-x: auto;
+    }
+
+    .sidebar-overlay.show-overlay {
+        display: block;
     }
 }
