@@ -702,17 +702,6 @@ body {
     text-decoration: underline;
 }
 
-.close-sidebar {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-}
-
 @media (max-width: 1200px) {
     .top-section {
         grid-template-columns: 1fr;
@@ -743,6 +732,7 @@ body {
     .app {
         display: block;
         width: 100%;
+        min-height: 100vh;
         overflow-x: hidden;
     }
 
@@ -753,12 +743,14 @@ body {
         position: fixed;
         top: 0;
         left: 0;
+
         transform: translateX(-100%);
+
         transition: transform 0.3s ease;
         z-index: 1001;
     }
 
-    /* Show sidebar when menu is clicked */
+    /* Show sidebar */
     .sidebar.show-sidebar {
         transform: translateX(0);
     }
@@ -768,12 +760,16 @@ body {
         transform: translateX(-100%);
     }
 
-    /* Main content always full width */
-    .main,
-    .main.expand-main {
+    /* Main content should take full screen */
+    .main {
         margin-left: 0;
         width: 100%;
         min-width: 0;
+    }
+
+    .main.expand-main {
+        margin-left: 0;
+        width: 100%;
     }
 
     .topbar {
@@ -822,7 +818,6 @@ body {
         align-items: flex-start;
     }
 
-    /* Hide extra profile information on small screens */
     .user-details,
     .user-arrow {
         display: none;
@@ -832,7 +827,6 @@ body {
         min-width: 0;
     }
 
-    /* Allow only the table itself to scroll horizontally */
     .table-container {
         width: 100%;
         max-width: 100%;
