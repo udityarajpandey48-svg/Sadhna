@@ -146,14 +146,14 @@ def addsadhana():
     sadhana = Sadhana.query.filter_by(studentid=studentid).order_by(studentid).first()
     return render_template("addsadhana.html")
 
-@app.route("/logout")
-def logout():
+# @app.route("/logout")
+# def logout():
 
-    session.pop("studentid", None)
+#     session.pop("studentid", None)
 
-    return redirect(
-        url_for("login")
-    )
+#     return redirect(
+#         url_for("login")
+#     )
 
 if __name__ == "__main__":
     app.run()
