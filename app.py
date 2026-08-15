@@ -248,6 +248,10 @@ def userprofile():
             "full_date": day,
             "sadhana": sadhana
         })
+    week_total = sum(
+    day["sadhana"].total
+    for day in week_dates
+    if day["sadhana"] is not None)
     week_percentage = round((week_total / 945) * 100, 1)
     return render_template(
         "userprofile.html",
