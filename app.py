@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for , session
 from flask_sqlalchemy import SQLAlchemy 
 from werkzeug.security import generate_password_hash , check_password_hash
 
@@ -20,8 +20,7 @@ class Student(db.Model):
     password = db.Column(db.String(200), nullable=False)
 
 
-with app.app_context():
-    db.create_all()
+
 
 class Score(db.Model):
     __tablename__ = "score"
@@ -41,7 +40,10 @@ class Sadhana(db.Model):
     class_points = db.Column(db.Integer , default=0)
     book_points = db.Column(db.Integer , default=0)
     clean_points = db.Column(db.Integer , default=0)
-    total = db.column(db.Integer)
+    total = db.Column(db.Integer)
+
+with app.app_context():
+    db.create_all()
 
 @app.route("/")
 def home():
@@ -114,18 +116,20 @@ def userprofile():
 
 @app.route("/addsadhana" , methods=('GET' , 'POST'))
 def addsadhana():
+    studentid = session.get("studentid")
     if request.method == 'POST':
-        bed_points = request.form.get("tobed")
-        wake_points = request.form.get("wakeup")
-        day_sleep_points = request.form.get("daysleep")
-        japa_points = request.form.get("japa")
-        mangal_points = request.form.get("mangalarati")
-        class_points = request.form.get("morningclass")
-        book_points = request.form.get("spbook")
-        clean_points = request.form.get("clean")
+        bed_points = int(request.form.get("tobed", 0) or 0)
+        wake_points = int(request.form.get("wakeup", 0) or 0)
+        day_sleep_points = int(request.form.get("daysleep", 0) or 0)
+        japa_points = int(request.form.get("japa", 0) or 0)
+        mangal_points = int(request.form.get("mangalarati", 0) or 0)
+        class_points = int(request.form.get("morningclass", 0) or 0)
+        book_points = int(request.form.get("spbook", 0) or 0)
+        clean_points = int(request.form.get("clean", 0) or 0)
 
 
         sadhana = Sadhana(
+        studentid = studentid,
         bed_points  = bed_points,
         wake_points  = wake_points,
         day_sleep_points  = day_sleep_points ,
@@ -138,22 +142,15 @@ def addsadhana():
         db.session.add(sadhana)
         db.session.commit()
 
-        return redirect("addsadhana.html")
+        return redirect("addsadhana")
 
         
         
-    studentid = db.session.get("studentid")
+    studentid = session.get("studentid")
     sadhana = Sadhana.query.filter_by(studentid=studentid).order_by(studentid).first()
-    return render_template("addsadhana.html")
+    return render_template("addsadhana.html" , sadhana=sadhana)
 
-# @app.route("/logout")
-# def logout():
 
-#     session.pop("studentid", None)
-
-#     return redirect(
-#         url_for("login")
-#     )
 
 if __name__ == "__main__":
     app.run()
