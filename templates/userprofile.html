@@ -212,7 +212,20 @@
                                                 {{ day.sadhana.day_sleep_points if day.sadhana else "-" }}
                                             </td>
                                             {% endfor %}
-                                            <td><strong>130</strong></td>
+                                            <td>
+                                                <strong>
+                                                    {% set total_daysleep = namespace(value=0) %}
+
+                                                    {% for day in week_dates %}
+                                                    {% if day.sadhana %}
+                                                    {% set total_daysleep.value =
+                                                    total_daysleep.value + day.sadhana.day_sleep_points %}
+                                                    {% endif %}
+                                                    {% endfor %}
+
+                                                    {{ total_daysleep.value }}
+                                                </strong>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><span class="activity-icon">📿</span>
