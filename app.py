@@ -243,6 +243,16 @@ def addsadhana():
 
         clean_points = int(request.form.get("clean"))
 
+        total = (
+        bed_points +
+        wake_points +
+        day_sleep_points +
+        japa_points +
+        mangal_points +
+        class_points +
+        book_points +
+        clean_points)
+
 
         sadhana = Sadhana(
             studentid=studentid,
@@ -254,6 +264,7 @@ def addsadhana():
             class_points=class_points,
             book_points=book_points,
             clean_points=clean_points,
+            total = total
         )
 
         db.session.add(sadhana)
