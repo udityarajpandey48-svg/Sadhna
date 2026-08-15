@@ -123,23 +123,23 @@
                             </div>
                             <div class="table-container">
                                 <table class="sadhana-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>ACTIVITY</th>
-                                                    <th>MAX</th>
+                                    <thead>
+                                        <tr>
+                                            <th>ACTIVITY</th>
+                                            <th>MAX</th>
 
-                                                    {% for day in week_dates %}
+                                            {% for day in week_dates %}
 
-                                                    <th class="{% if day.full_date == today %}selected-day{% endif %}">
-                                                        {{ day.name }}<br>
-                                                        <small>{{ day.date }}</small>
-                                                    </th>
+                                            <th class="{% if day.full_date == today %}selected-day{% endif %}">
+                                                {{ day.name }}<br>
+                                                <small>{{ day.date }}</small>
+                                            </th>
 
-                                                    {% endfor %}
+                                            {% endfor %}
 
-                                                    <th>WEEK TOTAL</th>
-                                                </tr>
-                                            </thead>
+                                            <th>WEEK TOTAL</th>
+                                        </tr>
+                                    </thead>
                                     <tbody>
                                         <tr>
                                             <td><span class="activity-icon">🌙</span>
@@ -148,14 +148,31 @@
                                                 </div>
                                             </td>
                                             <td>20</td>
-                                            <td class="good ">20</td>
-                                            <td class="good">20</td>
-                                            <td class="good selected-day">20</td>
-                                            <td class="good">20</td>
-                                            <td class="good">20</td>
-                                            <td class="good">20</td>
-                                            <td class="good">20</td>
-                                            <td><strong>140</strong></td>
+                                            {% for day in week_dates %}
+
+                                            <td class="{% if day.full_date == today %}selected-day{% endif %}">
+                                                {% if day.sadhana %}
+                                                {{ day.sadhana.bed_points }}
+                                                {% else %}
+                                                -
+                                                {% endif %}
+                                            </td>
+
+                                            {% endfor %}
+
+                                            <td>
+                                                <strong>
+                                                    {% set total_bed = namespace(value=0) %}
+
+                                                    {% for day in week_dates %}
+                                                    {% if day.sadhana %}
+                                                    {% set total_bed.value = total_bed.value + day.sadhana.bed_points %}
+                                                    {% endif %}
+                                                    {% endfor %}
+
+                                                    {{ total_bed.value }}
+                                                </strong>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><span class="activity-icon">☀️</span>
@@ -164,14 +181,25 @@
                                                         4:30 am - 0</small></div>
                                             </td>
                                             <td>20</td>
-                                            <td class="good">20</td>
-                                            <td class="good">20</td>
-                                            <td class="good selected-day">20</td>
-                                            <td class="bad">15</td>
-                                            <td class="good">20</td>
-                                            <td class="good">20</td>
-                                            <td class="good">20</td>
-                                            <td><strong>135</strong></td>
+                                            {% for day in week_dates %}
+                                            <td class="{% if day.full_date == today %}selected-day{% endif %}">
+                                                {{ day.sadhana.wake_points if day.sadhana else "-" }}
+                                            </td>
+                                            {% endfor %}
+                                            <td>
+                                                <strong>
+                                                    {% set total_wake = namespace(value=0) %}
+
+                                                    {% for day in week_dates %}
+                                                    {% if day.sadhana %}
+                                                    {% set total_wake.value =
+                                                    total_wake.value + day.sadhana.wake_points %}
+                                                    {% endif %}
+                                                    {% endfor %}
+
+                                                    {{ total_wake.value }}
+                                                </strong>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><span class="activity-icon">🛏️</span>
@@ -179,13 +207,11 @@
                                                 </div>
                                             </td>
                                             <td>20</td>
-                                            <td class="good">20</td>
-                                            <td class="good">20</td>
-                                            <td class="good selected-day">20</td>
-                                            <td class="bad">10</td>
-                                            <td class="good">20</td>
-                                            <td class="good">20</td>
-                                            <td class="good">20</td>
+                                            {% for day in week_dates %}
+                                            <td class="{% if day.full_date == today %}selected-day{% endif %}">
+                                                {{ day.sadhana.day_sleep_points if day.sadhana else "-" }}
+                                            </td>
+                                            {% endfor %}
                                             <td><strong>130</strong></td>
                                         </tr>
                                         <tr>
@@ -193,28 +219,50 @@
                                                 <div><strong>JAPA</strong><small>All rounds before 7:30 am</small></div>
                                             </td>
                                             <td>20</td>
-                                            <td class="good">20</td>
-                                            <td class="bad">15</td>
-                                            <td class="good selected-day">20</td>
-                                            <td class="bad">15</td>
-                                            <td class="good">20</td>
-                                            <td class="bad">15</td>
-                                            <td class="good">20</td>
-                                            <td><strong>125</strong></td>
+                                            {% for day in week_dates %}
+                                            <td class="{% if day.full_date == today %}selected-day{% endif %}">
+                                                {{ day.sadhana.japa_points if day.sadhana else "-" }}
+                                            </td>
+                                            {% endfor %}
+                                            <td>
+                                                <strong>
+                                                    {% set total_japa = namespace(value=0) %}
+
+                                                    {% for day in week_dates %}
+                                                    {% if day.sadhana %}
+                                                    {% set total_japa.value =
+                                                    total_japa.value + day.sadhana.japa_points %}
+                                                    {% endif %}
+                                                    {% endfor %}
+
+                                                    {{ total_japa.value }}
+                                                </strong>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><span class="activity-icon">🪔</span>
                                                 <div><strong>Mangal Arti</strong><small>Attend timely</small></div>
                                             </td>
                                             <td>20</td>
-                                            <td class="good">20</td>
-                                            <td class="good">20</td>
-                                            <td class="good selected-day">20</td>
-                                            <td class="good">20</td>
-                                            <td class="good">20</td>
-                                            <td class="good">20</td>
-                                            <td class="good">20</td>
-                                            <td><strong>140</strong></td>
+                                            {% for day in week_dates %}
+                                            <td class="{% if day.full_date == today %}selected-day{% endif %}">
+                                                {{ day.sadhana.mangal_points if day.sadhana else "-" }}
+                                            </td>
+                                            {% endfor %}
+                                            <td>
+                                                <strong>
+                                                    {% set total_mangal = namespace(value=0) %}
+
+                                                    {% for day in week_dates %}
+                                                    {% if day.sadhana %}
+                                                    {% set total_mangal.value =
+                                                    total_mangal.value + day.sadhana.mangal_points %}
+                                                    {% endif %}
+                                                    {% endfor %}
+
+                                                    {{ total_mangal.value }}
+                                                </strong>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><span class="activity-icon">📚</span>
@@ -222,14 +270,25 @@
                                                 </div>
                                             </td>
                                             <td>20</td>
-                                            <td class="good">20</td>
-                                            <td class="good">20</td>
-                                            <td class="good selected-day">20</td>
-                                            <td class="good">20</td>
-                                            <td class="good">20</td>
-                                            <td class="good">20</td>
-                                            <td class="good">20</td>
-                                            <td><strong>140</strong></td>
+                                            {% for day in week_dates %}
+                                            <td class="{% if day.full_date == today %}selected-day{% endif %}">
+                                                {{ day.sadhana.class_points if day.sadhana else "-" }}
+                                            </td>
+                                            {% endfor %}
+                                            <td>
+                                                <strong>
+                                                    {% set total_class = namespace(value=0) %}
+
+                                                    {% for day in week_dates %}
+                                                    {% if day.sadhana %}
+                                                    {% set total_class.value =
+                                                    total_class.value + day.sadhana.class_points %}
+                                                    {% endif %}
+                                                    {% endfor %}
+
+                                                    {{ total_class.value }}
+                                                </strong>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><span class="activity-icon">📖</span>
@@ -237,14 +296,25 @@
                                                 </div>
                                             </td>
                                             <td>10</td>
-                                            <td class="bad">10</td>
-                                            <td class="bad">10</td>
-                                            <td class="bad selected-day">10</td>
-                                            <td class="bad">10</td>
-                                            <td class="bad">10</td>
-                                            <td class="bad">10</td>
-                                            <td class="bad">10</td>
-                                            <td><strong>70</strong></td>
+                                            {% for day in week_dates %}
+                                            <td class="{% if day.full_date == today %}selected-day{% endif %}">
+                                                {{ day.sadhana.book_points if day.sadhana else "-" }}
+                                            </td>
+                                            {% endfor %}
+                                            <td>
+                                                <strong>
+                                                    {% set total_book = namespace(value=0) %}
+
+                                                    {% for day in week_dates %}
+                                                    {% if day.sadhana %}
+                                                    {% set total_book.value =
+                                                    total_book.value + day.sadhana.book_points %}
+                                                    {% endif %}
+                                                    {% endfor %}
+
+                                                    {{ total_book.value }}
+                                                </strong>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td><span class="activity-icon">🧹</span>
@@ -252,28 +322,53 @@
                                                         clean</small></div>
                                             </td>
                                             <td>5</td>
-                                            <td class="good">5</td>
-                                            <td class="good">5</td>
-                                            <td class="good selected-day">5</td>
-                                            <td class="good">5</td>
-                                            <td class="good">5</td>
-                                            <td class="good">5</td>
-                                            <td class="good">5</td>
-                                            <td><strong>35</strong></td>
+                                            {% for day in week_dates %}
+                                            <td class="{% if day.full_date == today %}selected-day{% endif %}">
+                                                {{ day.sadhana.clean_points if day.sadhana else "-" }}
+                                            </td>
+                                            {% endfor %}
+                                            <td>
+                                                <strong>
+                                                    {% set total_clean = namespace(value=0) %}
+
+                                                    {% for day in week_dates %}
+                                                    {% if day.sadhana %}
+                                                    {% set total_clean.value =
+                                                    total_clean.value + day.sadhana.clean_points %}
+                                                    {% endif %}
+                                                    {% endfor %}
+
+                                                    {{ total_clean.value }}
+                                                </strong>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <th>TOTAL (DAILY SADHANA)</th>
+
                                             <th>135</th>
-                                            <th>135</th>
-                                            <th>130</th>
-                                            <th class="selected-day">135</th>
-                                            <th>120</th>
-                                            <th>135</th>
-                                            <th>135</th>
-                                            <th>135</th>
-                                            <th class="total-green">935 / 1050</th>
+
+                                            {% set week_total = namespace(value=0) %}
+
+                                            {% for day in week_dates %}
+
+                                            <th class="{% if day.full_date == today %}selected-day{% endif %}">
+                                                {% if day.sadhana %}
+                                                {{ day.sadhana.total }}
+
+                                                {% set week_total.value =
+                                                week_total.value + day.sadhana.total %}
+                                                {% else %}
+                                                -
+                                                {% endif %}
+                                            </th>
+
+                                            {% endfor %}
+
+                                            <th class="total-green">
+                                                {{ week_total.value }} / 945
+                                            </th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -283,7 +378,10 @@
                     <aside class="right-content">
                         <div class="card summary-card">
                             <h3>▥ &nbsp; WEEKLY SUMMARY</h3>
-                            <div class="summary-row"><span>Total Obtained</span><strong>935 / 1050</strong></div>
+                            <div class="summary-row">
+                                <span>Total Obtained</span>
+                                <strong>{{ week_total }} / 945</strong>
+                            </div>
                             <div class="summary-row"><span>Overall Percentage</span><strong
                                     class="green-text">89.0%</strong></div>
                             <div class="summary-row"><span>Grade</span><strong class="grade">A-</strong></div>

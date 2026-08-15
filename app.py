@@ -1,5 +1,5 @@
 import os
-from datetime import datetime , timedelta
+from datetime import datetime , timedelta , date
 from flask import Flask, render_template, request, redirect, url_for , session
 from flask_sqlalchemy import SQLAlchemy 
 from werkzeug.security import generate_password_hash , check_password_hash
@@ -123,18 +123,29 @@ class Score(db.Model):
     score = db.Column(db.Integer)
 
 class Sadhana(db.Model):
+
     __tablename__ = "sadhana"
+
     id = db.Column(db.Integer, primary_key=True)
-    studentid = db.Column(db.String(20), db.ForeignKey("student.studentid"))
-    bed_points = db.Column(db.Integer , default=0)
-    wake_points = db.Column(db.Integer , default=0)
-    day_sleep_points = db.Column(db.Integer , default=0)
-    japa_points = db.Column(db.Integer , default=0)
-    mangal_points = db.Column(db.Integer , default=0)
-    class_points = db.Column(db.Integer , default=0)
-    book_points = db.Column(db.Integer , default=0)
-    clean_points = db.Column(db.Integer , default=0)
-    total = db.Column(db.Integer)
+
+    studentid = db.Column(
+        db.String(20),
+        db.ForeignKey("student.studentid"))
+
+    sadhana_date = db.Column(
+        db.Date,
+        nullable=False,
+        default=date.today)
+
+    bed_points = db.Column(db.Integer, default=0)
+    wake_points = db.Column(db.Integer, default=0)
+    day_sleep_points = db.Column(db.Integer, default=0)
+    japa_points = db.Column(db.Integer, default=0)
+    mangal_points = db.Column(db.Integer, default=0)
+    class_points = db.Column(db.Integer, default=0)
+    book_points = db.Column(db.Integer, default=0)
+    clean_points = db.Column(db.Integer, default=0)
+    total = db.Column(db.Integer, default=0)
 
 with app.app_context():
     db.create_all()
@@ -212,103 +223,124 @@ def userprofile():
     if not studentid:
         return redirect(url_for("login"))
 
-    student = Student.query.filter_by(studentid=studentid).first()
-    today = datetime.today().date()
+    student = Student.query.filter_by(
+        studentid=studentid
+    ).first()
+
+    today = date.today()
 
     start_of_week = today - timedelta(days=today.weekday())
+
     week_dates = []
 
     for i in range(7):
+
         day = start_of_week + timedelta(days=i)
+
+        sadhana = Sadhana.query.filter_by(
+            studentid=studentid,
+            sadhana_date=day
+        ).first()
+
         week_dates.append({
             "name": day.strftime("%a").upper(),
             "date": day.strftime("%d %b"),
-            "full_date": day
+            "full_date": day,
+            "sadhana": sadhana
         })
-
+    week_percentage = round((week_total / 945) * 100, 1)
     return render_template(
         "userprofile.html",
         student=student,
         week_dates=week_dates,
-        today=today
-    )
-   
+        today=today,
+        week_percentage=week_percentage)
 
 @app.route("/addsadhana", methods=["GET", "POST"])
 def addsadhana():
+
 
     studentid = session.get("studentid")
 
     if not studentid:
         return redirect(url_for("login"))
 
+    today = date.today()
+
     if request.method == "POST":
 
         bed_points = calculate_bed_points(
-            request.form.get("tobed")
-        )
+            request.form.get("tobed"))
 
         wake_points = calculate_wakeup_points(
-            request.form.get("wakeup")
-        )
+            request.form.get("wakeup"))
 
         japa_points = calculate_japacomplete_points(
-            request.form.get("japa")
-        )
+            request.form.get("japa"))
 
         day_sleep_points = calculate_daysleep_points(
-            int(request.form.get("daysleep", 0) or 0)
-        )
+            int(request.form.get("daysleep", 0) or 0))
 
-        mangal_points = int(request.form.get("mangalarati"))
-    
-
-        class_points = int(request.form.get("morningclass"))
-
-        book_points = int(request.form.get("spbook"))
-
-        clean_points = int(request.form.get("clean"))
+        mangal_points = int(request.form.get("mangalarati") or 0)
+        class_points = int(request.form.get("morningclass") or 0)
+        book_points = int(request.form.get("spbook") or 0)
+        clean_points = int(request.form.get("clean") or 0)
 
         total = (
-        bed_points +
-        wake_points +
-        day_sleep_points +
-        japa_points +
-        mangal_points +
-        class_points +
-        book_points +
-        clean_points)
+            bed_points +
+            wake_points +
+            day_sleep_points +
+            japa_points +
+            mangal_points +
+            class_points +
+            book_points +
+            clean_points)
 
-
-        sadhana = Sadhana(
+        existing_sadhana = Sadhana.query.filter_by(
             studentid=studentid,
-            bed_points=bed_points,
-            wake_points=wake_points,
-            day_sleep_points=day_sleep_points,
-            japa_points=japa_points,
-            mangal_points=mangal_points,
-            class_points=class_points,
-            book_points=book_points,
-            clean_points=clean_points,
-            total = total
-        )
+            sadhana_date=today
+        ).first()
 
-        db.session.add(sadhana)
+        if existing_sadhana:
+            existing_sadhana.bed_points = bed_points
+            existing_sadhana.wake_points = wake_points
+            existing_sadhana.day_sleep_points = day_sleep_points
+            existing_sadhana.japa_points = japa_points
+            existing_sadhana.mangal_points = mangal_points
+            existing_sadhana.class_points = class_points
+            existing_sadhana.book_points = book_points
+            existing_sadhana.clean_points = clean_points
+            existing_sadhana.total = total
+
+        else:
+            sadhana = Sadhana(
+                studentid=studentid,
+                sadhana_date=today,
+                bed_points=bed_points,
+                wake_points=wake_points,
+                day_sleep_points=day_sleep_points,
+                japa_points=japa_points,
+                mangal_points=mangal_points,
+                class_points=class_points,
+                book_points=book_points,
+                clean_points=clean_points,
+                total=total
+            )
+
+            db.session.add(sadhana)
+
         db.session.commit()
 
         return redirect(url_for("addsadhana"))
 
     sadhana = Sadhana.query.filter_by(
-        studentid=studentid
-    ).order_by(
-        Sadhana.id.desc()
+        studentid=studentid,
+        sadhana_date=today
     ).first()
 
     return render_template(
         "addsadhana.html",
-        sadhana=sadhana
-    )
-
+        sadhana=sadhana)
 
 if __name__ == "__main__":
     app.run()
