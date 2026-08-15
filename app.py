@@ -114,10 +114,14 @@ def register():
 def userprofile():
     return render_template("userprofile.html")
 
-@app.route("/addsadhana" , methods=('GET' , 'POST'))
+@app.route("/addsadhana", methods=["GET", "POST"])
 def addsadhana():
     studentid = session.get("studentid")
-    if request.method == 'POST':
+
+    if not studentid:
+        return redirect(url_for("login"))
+
+    if request.method == "POST":
         bed_points = int(request.form.get("tobed", 0) or 0)
         wake_points = int(request.form.get("wakeup", 0) or 0)
         day_sleep_points = int(request.form.get("daysleep", 0) or 0)
@@ -127,22 +131,33 @@ def addsadhana():
         book_points = int(request.form.get("spbook", 0) or 0)
         clean_points = int(request.form.get("clean", 0) or 0)
 
-
         sadhana = Sadhana(
-        studentid = studentid,
-        bed_points  = bed_points,
-        wake_points  = wake_points,
-        day_sleep_points  = day_sleep_points ,
-        japa_points  = japa_points ,
-        mangal_points = mangal_points ,
-        class_points  = class_points,
-        book_points  = book_points,
-        clean_points  = clean_points)
+            studentid=studentid,
+            bed_points=bed_points,
+            wake_points=wake_points,
+            day_sleep_points=day_sleep_points,
+            japa_points=japa_points,
+            mangal_points=mangal_points,
+            class_points=class_points,
+            book_points=book_points,
+            clean_points=clean_points,
+        )
 
         db.session.add(sadhana)
         db.session.commit()
 
-        return redirect("addsadhana")
+        return redirect(url_for("addsadhana"))
+
+    sadhana = Sadhana.query.filter_by(
+        studentid=studentid
+    ).order_by(
+        Sadhana.id.desc()
+    ).first()
+
+    return render_template(
+        "addsadhana.html",
+        sadhana=sadhana
+    )
 
         
         
