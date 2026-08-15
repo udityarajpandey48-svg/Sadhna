@@ -63,7 +63,7 @@
                     <div class="user-profile">
                         <div class="user-avatar">UR</div>
                         <div class="user-details">
-                            <strong>Hare Krishna, Uditya</strong>
+                            <strong>Hare Krishna, {{student.fullname if student else 0}}</strong>
                             <small>id__</small>
                         </div>
                         <div class="user-arrow">⌄</div>
@@ -76,7 +76,7 @@
                         <div class="avatar-large">UR</div>
                         <div class="welcome-info">
                             <span>Welcome back,</span>
-                            <h2>Hare Krishna {student.fullname} 🙏</h2>
+                            <h2>Hare Krishna {{student.fullname}} 🙏</h2>
                             <strong>id__</strong>
                             <p>"....."</p>
                         </div>
@@ -123,20 +123,23 @@
                             </div>
                             <div class="table-container">
                                 <table class="sadhana-table">
-                                    <thead>
-                                        <tr>
-                                            <th>ACTIVITY</th>
-                                            <th>MAX</th>
-                                            <th>MON <br class="selected-day"><small>12 May</small></th>
-                                            <th>TUE<br><small>13 May</small></th>
-                                            <th>WED<br><small>14 May</small></th>
-                                            <th>THU<br><small>15 May</small></th>
-                                            <th>FRI<br><small>16 May</small></th>
-                                            <th>SAT<br><small>17 May</small></th>
-                                            <th>SUN<br><small>18 May</small></th>
-                                            <th>WEEK TOTAL</th>
-                                        </tr>
-                                    </thead>
+                                            <thead>
+                                                <tr>
+                                                    <th>ACTIVITY</th>
+                                                    <th>MAX</th>
+
+                                                    {% for day in week_dates %}
+
+                                                    <th class="{% if day.full_date == today %}selected-day{% endif %}">
+                                                        {{ day.name }}<br>
+                                                        <small>{{ day.date }}</small>
+                                                    </th>
+
+                                                    {% endfor %}
+
+                                                    <th>WEEK TOTAL</th>
+                                                </tr>
+                                            </thead>
                                     <tbody>
                                         <tr>
                                             <td><span class="activity-icon">🌙</span>

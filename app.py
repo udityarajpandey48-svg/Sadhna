@@ -1,5 +1,5 @@
 import os
-from datetime import datetime
+from datetime import datetime , timedelta
 from flask import Flask, render_template, request, redirect, url_for , session
 from flask_sqlalchemy import SQLAlchemy 
 from werkzeug.security import generate_password_hash , check_password_hash
@@ -206,7 +206,33 @@ def register():
 
 @app.route("/userprofile")
 def userprofile():
-    return render_template("userprofile.html")
+
+    studentid = session.get("studentid")
+
+    if not studentid:
+        return redirect(url_for("login"))
+
+    student = Student.query.filter_by(studentid=studentid).first()
+    today = datetime.today().date()
+
+    start_of_week = today - timedelta(days=today.weekday())
+    week_dates = []
+
+    for i in range(7):
+        day = start_of_week + timedelta(days=i)
+        week_dates.append({
+            "name": day.strftime("%a").upper(),
+            "date": day.strftime("%d %b"),
+            "full_date": day
+        })
+
+    return render_template(
+        "userprofile.html",
+        student=student,
+        week_dates=week_dates,
+        today=today
+    )
+   
 
 @app.route("/addsadhana", methods=["GET", "POST"])
 def addsadhana():

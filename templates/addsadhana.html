@@ -458,6 +458,18 @@
 
 
             <script>
+
+                const today = new Date();
+
+                const options = {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric"
+                };
+
+                document.getElementById("todayDate").textContent =
+                    today.toLocaleDateString("en-IN", options);
+                    
                 const menuButton = document.querySelector(".menu-button");
                 const sidebar = document.querySelector(".sidebar");
                 const main = document.querySelector(".main");
