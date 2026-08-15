@@ -12,16 +12,16 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 
-bed_time = request.form.get('tobed')
-wakeup_time = request.form.get('wakeup')
-japacomplete_time = request.form.get('japa')
+# bed_time = request.form.get('tobed')
+# wakeup_time = request.form.get('wakeup')
+# japacomplete_time = request.form.get('japa')
 
-ammountof_daysleep_in_minuts = int(request.form.get("daysleep", 0) or 0)
+# ammountof_daysleep_in_minuts = int(request.form.get("daysleep", 0) or 0)
 
-present_or_not_mangal_points = request.form.get("mangalarati")
-present_or_not_class_points = request.form.get("morningclass")
-present_or_not_book_points = request.form.get("spbook")
-present_or_not_clean_points = request.form.get("clean")
+# present_or_not_mangal_points = request.form.get("mangalarati")
+# present_or_not_class_points = request.form.get("morningclass")
+# present_or_not_book_points = request.form.get("spbook")
+# present_or_not_clean_points = request.form.get("clean")
 
 
 def calculate_bed_points(bed_time):
