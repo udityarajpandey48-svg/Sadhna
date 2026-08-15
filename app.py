@@ -29,6 +29,20 @@ class Score(db.Model):
     studentid = db.Column(db.String(20), db.ForeignKey("student.studentid"))
     score = db.Column(db.Integer)
 
+class Sadhana(db.Model):
+    __tablename__ = "sadhana"
+    id = db.Column(db.Integer, primary_key=True)
+    studentid = db.Column(db.String(20), db.ForeignKey("student.studentid"))
+    bed_points = db.Column(db.Integer , default=0)
+    wake_points = db.Column(db.Integer , default=0)
+    day_sleep_points = db.Column(db.Integer , default=0)
+    japa_points = db.Column(db.Integer , default=0)
+    mangal_points = db.Column(db.Integer , default=0)
+    class_points = db.Column(db.Integer , default=0)
+    book_points = db.Column(db.Integer , default=0)
+    clean_points = db.Column(db.Integer , default=0)
+    total = db.column(db.Integer)
+
 @app.route("/")
 def home():
     leaderboard = db.session.query(Student , Score).join(Score , Student.studentid == Score.studentid).order_by(Score.score.desc()).all()
@@ -47,7 +61,7 @@ def login():
         student = Student.query.filter_by(studentid=studentid).first()
 
         if student and check_password_hash(student.password, password):
-
+            session["studentid"] = student.studentid
             return redirect(url_for("userprofile"))
         return "invalid student id or password"
 
@@ -98,9 +112,48 @@ def register():
 def userprofile():
     return render_template("userprofile.html")
 
-@app.route("/addsadhana")
+@app.route("/addsadhana" , methods=('GET' , 'POST'))
 def addsadhana():
+    if request.method == 'POST':
+        bed_points = request.form.get("tobed")
+        wake_points = request.form.get("wakeup")
+        day_sleep_points = request.form.get("daysleep")
+        japa_points = request.form.get("japa")
+        mangal_points = request.form.get("mangalarati")
+        class_points = request.form.get("morningclass")
+        book_points = request.form.get("spbook")
+        clean_points = request.form.get("clean")
+
+
+        sadhana = Sadhana(
+        bed_points  = bed_points,
+        wake_points  = wake_points,
+        day_sleep_points  = day_sleep_points ,
+        japa_points  = japa_points ,
+        mangal_points = mangal_points ,
+        class_points  = class_points,
+        book_points  = book_points,
+        clean_points  = clean_points)
+
+        db.session.add(sadhana)
+        db.session.commit()
+
+        return redirect("addsadhana.html")
+
+        
+        
+    studentid = db.session.get("studentid")
+    sadhana = Sadhana.query.filter_by(studentid=studentid).order_by(studentid).first()
     return render_template("addsadhana.html")
+
+@app.route("/logout")
+def logout():
+
+    session.pop("studentid", None)
+
+    return redirect(
+        url_for("login")
+    )
 
 if __name__ == "__main__":
     app.run()

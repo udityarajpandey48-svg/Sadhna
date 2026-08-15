@@ -70,6 +70,7 @@
                     </div>
                 </div>
             </header>
+            <form method="POST" action="{{crl_for('addsadhana.html')}}">
             <div class="sadhana-content">
 
                 <div class="page-heading">
@@ -99,7 +100,7 @@
                         </div>
 
                         <div class="point-display" id="bedPoints">
-                            0 Points
+                            {{sadhana.bed_points}}
                         </div>
                     </div>
 
@@ -107,7 +108,7 @@
 
                         <label>Bed Time</label>
 
-                        <input type="time" id="bedTime" class="sadhana-input">
+                        <input type="time" id="bedTime" class="sadhana-input" name="tobed">
 
                         <div class="rule-info">
                             <strong>Points Rule:</strong>
@@ -143,7 +144,7 @@
                         </div>
 
                         <div class="point-display" id="wakePoints">
-                            0 Points
+                            {{sadhana.wake_points}}
                         </div>
 
                     </div>
@@ -153,7 +154,7 @@
 
                         <label>Wake Up Time</label>
 
-                        <input type="time" id="wakeTime" class="sadhana-input">
+                        <input type="time" id="wakeTime" class="sadhana-input" name="wakeup">
 
                         <div class="rule-info">
 
@@ -192,7 +193,7 @@
                         </div>
 
                         <div class="point-display" id="daySleepPoints">
-                            0 Points
+                            {{sadhana.day_sleep_points}}
                         </div>
 
                     </div>
@@ -202,7 +203,7 @@
 
                         <label>Day Sleep (Minutes)</label>
 
-                        <input type="number" id="daySleep" class="sadhana-input" placeholder="Example: 30">
+                        <input type="number" id="daySleep" class="sadhana-input" placeholder="Example: 30" name="daysleep">
 
                         <div class="rule-info">
 
@@ -239,7 +240,7 @@
                         </div>
 
                         <div class="point-display" id="japaPoints">
-                            0 Points
+                            {{sadhana.japa_points}}
                         </div>
 
                     </div>
@@ -249,7 +250,7 @@
 
                         <label>Japa Completion Time</label>
 
-                        <input type="time" id="japaTime" class="sadhana-input">
+                        <input type="time" id="japaTime" class="sadhana-input" name="japa">
 
                         <div class="rule-info">
 
@@ -288,7 +289,7 @@
                         </div>
 
                         <div class="point-display" id="mangalPoints">
-                            0 Points
+                            {{sadhana.mangal_points}}
                         </div>
 
                     </div>
@@ -298,7 +299,7 @@
 
                         <label>Did you attend Mangal Arati?</label>
 
-                        <select id="mangalArati" class="sadhana-input">
+                        <select id="mangalArati" class="sadhana-input" name="mangalarati">
 
                             <option value="">Select</option>
                             <option value="20">Yes, attended timely</option>
@@ -329,7 +330,7 @@
                         </div>
 
                         <div class="point-display" id="classPoints">
-                            0 Points
+                            {{sadhana.class_points}}
                         </div>
 
                     </div>
@@ -339,7 +340,7 @@
 
                         <label>Morning Class</label>
 
-                        <select id="morningClass" class="sadhana-input">
+                        <select id="morningClass" class="sadhana-input" name="morningclass">
 
                             <option value="">Select</option>
                             <option value="20">Attended Timely</option>
@@ -370,7 +371,7 @@
                         </div>
 
                         <div class="point-display" id="bookPoints">
-                            0 Points
+                            {{sadhana.book_points}}
                         </div>
 
                     </div>
@@ -378,7 +379,7 @@
 
                     <div class="activity-body">
 
-                        <select id="bookReading" class="sadhana-input">
+                        <select id="bookReading" class="sadhana-input" name="spbook">
 
                             <option value="">Select</option>
                             <option value="10">Completed</option>
@@ -409,7 +410,7 @@
                         </div>
 
                         <div class="point-display" id="cleanPoints">
-                            0 Points
+                            {{sadhana.clean_points}}
                         </div>
 
                     </div>
@@ -417,7 +418,7 @@
 
                     <div class="activity-body">
 
-                        <select id="cleanliness" class="sadhana-input">
+                        <select id="cleanliness" class="sadhana-input" name="clean">
 
                             <option value="">Select</option>
                             <option value="5">Completed</option>
@@ -436,7 +437,7 @@
 
                     <div>
                         <span>Total Points</span>
-                        <h2 id="totalPoints">0</h2>
+                        <h2 id="totalPoints">{{adding.totalpoints}}</h2>
                     </div>
 
                     <div>
@@ -451,7 +452,7 @@
                 </div>
 
             </div>
-
+            </form>
 
 
 
