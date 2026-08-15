@@ -70,388 +70,389 @@
                     </div>
                 </div>
             </header>
-            <form method="POST" action="{{url_for('addsadhana.html')}}">
-            <div class="sadhana-content">
+            <form method="POST" action="{{ url_for('addsadhana') }}">
+                <div class="sadhana-content">
 
-                <div class="page-heading">
-                    <div>
-                        <h2>Add Daily Sadhana</h2>
-                        <p>Fill in today's spiritual activities.</p>
+                    <div class="page-heading">
+                        <div>
+                            <h2>Add Daily Sadhana</h2>
+                            <p>Fill in today's spiritual activities.</p>
+                        </div>
+
+                        <div class="date-box">
+                            <span>📅</span>
+                            <span id="todayDate"></span>
+                        </div>
                     </div>
 
-                    <div class="date-box">
-                        <span>📅</span>
-                        <span id="todayDate"></span>
-                    </div>
-                </div>
 
+                    <!-- NIDRA TO BED -->
 
-                <!-- NIDRA TO BED -->
+                    <div class="sadhana-card">
+                        <div class="activity-header">
+                            <div class="activity-title">
+                                <span class="activity-emoji">🌙</span>
 
-                <div class="sadhana-card">
-                    <div class="activity-header">
-                        <div class="activity-title">
-                            <span class="activity-emoji">🌙</span>
+                                <div>
+                                    <h3>NIDRA - To Bed</h3>
+                                    <p>Enter the time when you went to bed.</p>
+                                </div>
+                            </div>
 
-                            <div>
-                                <h3>NIDRA - To Bed</h3>
-                                <p>Enter the time when you went to bed.</p>
+                            <div class="point-display" id="bedPoints">
+                                {{sadhana.bed_points}}
                             </div>
                         </div>
 
-                        <div class="point-display" id="bedPoints">
-                            {{sadhana.bed_points}}
-                        </div>
-                    </div>
+                        <div class="activity-body">
 
-                    <div class="activity-body">
+                            <label>Bed Time</label>
 
-                        <label>Bed Time</label>
+                            <input type="time" id="bedTime" class="sadhana-input" name="tobed">
 
-                        <input type="time" id="bedTime" class="sadhana-input" name="tobed">
+                            <div class="rule-info">
+                                <strong>Points Rule:</strong>
 
-                        <div class="rule-info">
-                            <strong>Points Rule:</strong>
-
-                            <ul>
-                                <li>Before 9:30 PM → 20 Points</li>
-                                <li>Before 9:45 PM → 15 Points</li>
-                                <li>Before 10:00 PM → 10 Points</li>
-                                <li>Before 10:15 PM → 5 Points</li>
-                                <li>After 10:15 PM → 0 Points</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-
-
-                <!-- NIDRA WAKE UP -->
-
-                <div class="sadhana-card">
-
-                    <div class="activity-header">
-
-                        <div class="activity-title">
-
-                            <span class="activity-emoji">☀️</span>
-
-                            <div>
-                                <h3>NIDRA - Wake Up</h3>
-                                <p>Enter your wake-up time.</p>
+                                <ul>
+                                    <li>Before 9:30 PM → 20 Points</li>
+                                    <li>Before 9:45 PM → 15 Points</li>
+                                    <li>Before 10:00 PM → 10 Points</li>
+                                    <li>Before 10:15 PM → 5 Points</li>
+                                    <li>After 10:15 PM → 0 Points</li>
+                                </ul>
                             </div>
 
                         </div>
-
-                        <div class="point-display" id="wakePoints">
-                            {{sadhana.wake_points}}
-                        </div>
-
                     </div>
 
 
-                    <div class="activity-body">
+                    <!-- NIDRA WAKE UP -->
 
-                        <label>Wake Up Time</label>
+                    <div class="sadhana-card">
 
-                        <input type="time" id="wakeTime" class="sadhana-input" name="wakeup">
+                        <div class="activity-header">
 
-                        <div class="rule-info">
+                            <div class="activity-title">
 
-                            <strong>Points Rule:</strong>
+                                <span class="activity-emoji">☀️</span>
 
-                            <ul>
-                                <li>Before 3:30 AM → 20 Points</li>
-                                <li>Before 3:45 AM → 15 Points</li>
-                                <li>Before 4:00 AM → 10 Points</li>
-                                <li>Before 4:15 AM → 5 Points</li>
-                                <li>After 4:30 AM → 0 Points</li>
-                            </ul>
+                                <div>
+                                    <h3>NIDRA - Wake Up</h3>
+                                    <p>Enter your wake-up time.</p>
+                                </div>
 
-                        </div>
+                            </div>
 
-                    </div>
-
-                </div>
-
-
-                <!-- DAY SLEEP -->
-
-                <div class="sadhana-card">
-
-                    <div class="activity-header">
-
-                        <div class="activity-title">
-
-                            <span class="activity-emoji">🛏️</span>
-
-                            <div>
-                                <h3>NIDRA - Day Sleep</h3>
-                                <p>Enter total minutes of day sleep.</p>
+                            <div class="point-display" id="wakePoints">
+                                {{sadhana.wake_points}}
                             </div>
 
                         </div>
 
-                        <div class="point-display" id="daySleepPoints">
-                            {{sadhana.day_sleep_points}}
-                        </div>
 
-                    </div>
+                        <div class="activity-body">
 
+                            <label>Wake Up Time</label>
 
-                    <div class="activity-body">
+                            <input type="time" id="wakeTime" class="sadhana-input" name="wakeup">
 
-                        <label>Day Sleep (Minutes)</label>
+                            <div class="rule-info">
 
-                        <input type="number" id="daySleep" class="sadhana-input" placeholder="Example: 30" name="daysleep">
+                                <strong>Points Rule:</strong>
 
-                        <div class="rule-info">
+                                <ul>
+                                    <li>Before 3:30 AM → 20 Points</li>
+                                    <li>Before 3:45 AM → 15 Points</li>
+                                    <li>Before 4:00 AM → 10 Points</li>
+                                    <li>Before 4:15 AM → 5 Points</li>
+                                    <li>After 4:30 AM → 0 Points</li>
+                                </ul>
 
-                            <strong>Points Rule:</strong>
-
-                            <ul>
-                                <li>30 minutes or less → 20 Points</li>
-                                <li>Up to 60 minutes → 10 Points</li>
-                                <li>More than 60 minutes → 5 Points</li>
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- JAPA -->
-
-                <div class="sadhana-card">
-
-                    <div class="activity-header">
-
-                        <div class="activity-title">
-
-                            <span class="activity-emoji">📿</span>
-
-                            <div>
-                                <h3>JAPA</h3>
-                                <p>Enter the time when all rounds were completed.</p>
                             </div>
 
                         </div>
 
-                        <div class="point-display" id="japaPoints">
-                            {{sadhana.japa_points}}
-                        </div>
-
                     </div>
 
 
-                    <div class="activity-body">
+                    <!-- DAY SLEEP -->
 
-                        <label>Japa Completion Time</label>
+                    <div class="sadhana-card">
 
-                        <input type="time" id="japaTime" class="sadhana-input" name="japa">
+                        <div class="activity-header">
 
-                        <div class="rule-info">
+                            <div class="activity-title">
 
-                            <strong>Points Rule:</strong>
+                                <span class="activity-emoji">🛏️</span>
 
-                            <ul>
-                                <li>Before 7:30 AM → 20 Points</li>
-                                <li>Before 9:00 AM → 15 Points</li>
-                                <li>Before 1:00 PM → 10 Points</li>
-                                <li>Before 3:00 PM → 5 Points</li>
-                                <li>After 3:00 PM → 0 Points</li>
-                            </ul>
+                                <div>
+                                    <h3>NIDRA - Day Sleep</h3>
+                                    <p>Enter total minutes of day sleep.</p>
+                                </div>
 
-                        </div>
+                            </div>
 
-                    </div>
-
-                </div>
-
-
-                <!-- MANGAL ARATI -->
-
-                <div class="sadhana-card">
-
-                    <div class="activity-header">
-
-                        <div class="activity-title">
-
-                            <span class="activity-emoji">🪔</span>
-
-                            <div>
-                                <h3>Mangal Arati</h3>
-                                <p>Select your attendance status.</p>
+                            <div class="point-display" id="daySleepPoints">
+                                {{sadhana.day_sleep_points}}
                             </div>
 
                         </div>
 
-                        <div class="point-display" id="mangalPoints">
-                            {{sadhana.mangal_points}}
-                        </div>
 
-                    </div>
+                        <div class="activity-body">
 
+                            <label>Day Sleep (Minutes)</label>
 
-                    <div class="activity-body">
+                            <input type="number" id="daySleep" class="sadhana-input" placeholder="Example: 30"
+                                name="daysleep">
 
-                        <label>Did you attend Mangal Arati?</label>
+                            <div class="rule-info">
 
-                        <select id="mangalArati" class="sadhana-input" name="mangalarati">
+                                <strong>Points Rule:</strong>
 
-                            <option value="">Select</option>
-                            <option value="20">Yes, attended timely</option>
-                            <option value="0">No / Absent</option>
+                                <ul>
+                                    <li>30 minutes or less → 20 Points</li>
+                                    <li>Up to 60 minutes → 10 Points</li>
+                                    <li>More than 60 minutes → 5 Points</li>
+                                </ul>
 
-                        </select>
-
-                    </div>
-
-                </div>
-
-
-                <!-- MORNING CLASS -->
-
-                <div class="sadhana-card">
-
-                    <div class="activity-header">
-
-                        <div class="activity-title">
-
-                            <span class="activity-emoji">📚</span>
-
-                            <div>
-                                <h3>Morning Class</h3>
-                                <p>Enter attendance information.</p>
                             </div>
 
                         </div>
 
-                        <div class="point-display" id="classPoints">
-                            {{sadhana.class_points}}
-                        </div>
-
                     </div>
 
 
-                    <div class="activity-body">
+                    <!-- JAPA -->
 
-                        <label>Morning Class</label>
+                    <div class="sadhana-card">
 
-                        <select id="morningClass" class="sadhana-input" name="morningclass">
+                        <div class="activity-header">
 
-                            <option value="">Select</option>
-                            <option value="20">Attended Timely</option>
-                            <option value="0">Absent</option>
+                            <div class="activity-title">
 
-                        </select>
+                                <span class="activity-emoji">📿</span>
 
-                    </div>
+                                <div>
+                                    <h3>JAPA</h3>
+                                    <p>Enter the time when all rounds were completed.</p>
+                                </div>
 
-                </div>
+                            </div>
 
-
-                <!-- BOOK READING -->
-
-                <div class="sadhana-card">
-
-                    <div class="activity-header">
-
-                        <div class="activity-title">
-
-                            <span class="activity-emoji">📖</span>
-
-                            <div>
-                                <h3>SP Book Reading</h3>
-                                <p>Did you complete the required reading?</p>
+                            <div class="point-display" id="japaPoints">
+                                {{sadhana.japa_points}}
                             </div>
 
                         </div>
 
-                        <div class="point-display" id="bookPoints">
-                            {{sadhana.book_points}}
-                        </div>
 
-                    </div>
+                        <div class="activity-body">
 
+                            <label>Japa Completion Time</label>
 
-                    <div class="activity-body">
+                            <input type="time" id="japaTime" class="sadhana-input" name="japa">
 
-                        <select id="bookReading" class="sadhana-input" name="spbook">
+                            <div class="rule-info">
 
-                            <option value="">Select</option>
-                            <option value="10">Completed</option>
-                            <option value="0">Not Completed</option>
+                                <strong>Points Rule:</strong>
 
-                        </select>
+                                <ul>
+                                    <li>Before 7:30 AM → 20 Points</li>
+                                    <li>Before 9:00 AM → 15 Points</li>
+                                    <li>Before 1:00 PM → 10 Points</li>
+                                    <li>Before 3:00 PM → 5 Points</li>
+                                    <li>After 3:00 PM → 0 Points</li>
+                                </ul>
 
-                    </div>
-
-                </div>
-
-
-                <!-- CLEANLINESS -->
-
-                <div class="sadhana-card">
-
-                    <div class="activity-header">
-
-                        <div class="activity-title">
-
-                            <span class="activity-emoji">🧹</span>
-
-                            <div>
-                                <h3>Cleanliness</h3>
-                                <p>Keeping attire and room clean.</p>
                             </div>
 
                         </div>
 
-                        <div class="point-display" id="cleanPoints">
-                            {{sadhana.clean_points}}
+                    </div>
+
+
+                    <!-- MANGAL ARATI -->
+
+                    <div class="sadhana-card">
+
+                        <div class="activity-header">
+
+                            <div class="activity-title">
+
+                                <span class="activity-emoji">🪔</span>
+
+                                <div>
+                                    <h3>Mangal Arati</h3>
+                                    <p>Select your attendance status.</p>
+                                </div>
+
+                            </div>
+
+                            <div class="point-display" id="mangalPoints">
+                                {{sadhana.mangal_points}}
+                            </div>
+
+                        </div>
+
+
+                        <div class="activity-body">
+
+                            <label>Did you attend Mangal Arati?</label>
+
+                            <select id="mangalArati" class="sadhana-input" name="mangalarati">
+
+                                <option value="">Select</option>
+                                <option value="20">Yes, attended timely</option>
+                                <option value="0">No / Absent</option>
+
+                            </select>
+
                         </div>
 
                     </div>
 
 
-                    <div class="activity-body">
+                    <!-- MORNING CLASS -->
 
-                        <select id="cleanliness" class="sadhana-input" name="clean">
+                    <div class="sadhana-card">
 
-                            <option value="">Select</option>
-                            <option value="5">Completed</option>
-                            <option value="0">Not Completed</option>
+                        <div class="activity-header">
 
-                        </select>
+                            <div class="activity-title">
+
+                                <span class="activity-emoji">📚</span>
+
+                                <div>
+                                    <h3>Morning Class</h3>
+                                    <p>Enter attendance information.</p>
+                                </div>
+
+                            </div>
+
+                            <div class="point-display" id="classPoints">
+                                {{sadhana.class_points}}
+                            </div>
+
+                        </div>
+
+
+                        <div class="activity-body">
+
+                            <label>Morning Class</label>
+
+                            <select id="morningClass" class="sadhana-input" name="morningclass">
+
+                                <option value="">Select</option>
+                                <option value="20">Attended Timely</option>
+                                <option value="0">Absent</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BOOK READING -->
+
+                    <div class="sadhana-card">
+
+                        <div class="activity-header">
+
+                            <div class="activity-title">
+
+                                <span class="activity-emoji">📖</span>
+
+                                <div>
+                                    <h3>SP Book Reading</h3>
+                                    <p>Did you complete the required reading?</p>
+                                </div>
+
+                            </div>
+
+                            <div class="point-display" id="bookPoints">
+                                {{sadhana.book_points}}
+                            </div>
+
+                        </div>
+
+
+                        <div class="activity-body">
+
+                            <select id="bookReading" class="sadhana-input" name="spbook">
+
+                                <option value="">Select</option>
+                                <option value="10">Completed</option>
+                                <option value="0">Not Completed</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CLEANLINESS -->
+
+                    <div class="sadhana-card">
+
+                        <div class="activity-header">
+
+                            <div class="activity-title">
+
+                                <span class="activity-emoji">🧹</span>
+
+                                <div>
+                                    <h3>Cleanliness</h3>
+                                    <p>Keeping attire and room clean.</p>
+                                </div>
+
+                            </div>
+
+                            <div class="point-display" id="cleanPoints">
+                                {{sadhana.clean_points}}
+                            </div>
+
+                        </div>
+
+
+                        <div class="activity-body">
+
+                            <select id="cleanliness" class="sadhana-input" name="clean">
+
+                                <option value="">Select</option>
+                                <option value="5">Completed</option>
+                                <option value="0">Not Completed</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TOTAL -->
+
+                    <div class="total-card">
+
+                        <div>
+                            <span>Total Points</span>
+                            <h2 id="totalPoints">{{adding.totalpoints}}</h2>
+                        </div>
+
+                        <div>
+                            <span>Maximum Points</span>
+                            <h2>135</h2>
+                        </div>
+
+                        <button id="saveSadhana">
+                            💾 Save Today's Sadhana
+                        </button>
 
                     </div>
 
                 </div>
-
-
-                <!-- TOTAL -->
-
-                <div class="total-card">
-
-                    <div>
-                        <span>Total Points</span>
-                        <h2 id="totalPoints">{{adding.totalpoints}}</h2>
-                    </div>
-
-                    <div>
-                        <span>Maximum Points</span>
-                        <h2>135</h2>
-                    </div>
-
-                    <button id="saveSadhana">
-                        💾 Save Today's Sadhana
-                    </button>
-
-                </div>
-
-            </div>
             </form>
 
 
