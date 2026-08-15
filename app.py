@@ -77,30 +77,30 @@ def calculate_daysleep_points(ammountof_daysleep_in_minuts):
     else:
         return 0
 
-def calculate_mangalarati_points(value):
-    if value == "yes":
-        return 20
-    else:
-        return 0
+# def calculate_mangalarati_points(value):
+#     if value == "yes":
+#         return 20
+#     else:
+#         return 0
 
 
-def calculate_bookreading_points(present_or_not_book_points):
-    if present_or_not_book_points == "completed":
-        return 10
-    else:
-        return 0
+# def calculate_bookreading_points(present_or_not_book_points):
+#     if present_or_not_book_points == "completed":
+#         return 10
+#     else:
+#         return 0
 
-def calculate_class_points(present_or_not_class_points):
-    if present_or_not_class_points == "attended":
-        return 20
-    else:
-        return 0
+# def calculate_class_points(present_or_not_class_points):
+#     if present_or_not_class_points == "attended":
+#         return 20
+#     else:
+#         return 0
 
-def calculate_clean_points(present_or_not_clean_points):
-    if present_or_not_clean_points == "completed":
-        return 5
-    else:
-        return 0
+# def calculate_clean_points(present_or_not_clean_points):
+#     if present_or_not_clean_points == "completed":
+#         return 5
+#     else:
+#         return 0
 
 
     
@@ -234,21 +234,14 @@ def addsadhana():
             int(request.form.get("daysleep", 0) or 0)
         )
 
-        mangal_points = calculate_mangalarati_points(
-            request.form.get("mangalarati")
-        )
+        mangal_points = int(request.form.get("mangalarati"))
+    
 
-        class_points = calculate_class_points(
-            request.form.get("morningclass")
-        )
+        class_points = int(request.form.get("morningclass"))
 
-        book_points = calculate_bookreading_points(
-            request.form.get("spbook")
-        )
+        book_points = int(request.form.get("spbook"))
 
-        clean_points = calculate_clean_points(
-            request.form.get("clean")
-        )
+        clean_points = int(request.form.get("clean"))
 
 
         sadhana = Sadhana(

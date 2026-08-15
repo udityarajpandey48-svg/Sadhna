@@ -100,7 +100,7 @@
                             </div>
 
                             <div class="point-display" id="bedPoints">
-                                {{sadhana.bed_points}}
+                                {{sadhana.bed_points if sadhana else 0}}
                             </div>
                         </div>
 
@@ -144,7 +144,7 @@
                             </div>
 
                             <div class="point-display" id="wakePoints">
-                                {{sadhana.wake_points}}
+                                {{sadhana.wake_points if sadhana else 0}}
                             </div>
 
                         </div>
@@ -193,7 +193,7 @@
                             </div>
 
                             <div class="point-display" id="daySleepPoints">
-                                {{sadhana.day_sleep_points}}
+                                {{sadhana.day_sleep_points if sadhana else 0}}
                             </div>
 
                         </div>
@@ -241,7 +241,7 @@
                             </div>
 
                             <div class="point-display" id="japaPoints">
-                                {{sadhana.japa_points}}
+                                {{sadhana.japa_points if sadhana else 0}}
                             </div>
 
                         </div>
@@ -290,7 +290,7 @@
                             </div>
 
                             <div class="point-display" id="mangalPoints">
-                                {{sadhana.mangal_points}}
+                                {{sadhana.mangal_points if sadhana else 0}}
                             </div>
 
                         </div>
@@ -331,7 +331,7 @@
                             </div>
 
                             <div class="point-display" id="classPoints">
-                                {{sadhana.class_points}}
+                                {{sadhana.class_points if sadhana else 0}}
                             </div>
 
                         </div>
@@ -372,7 +372,7 @@
                             </div>
 
                             <div class="point-display" id="bookPoints">
-                                {{sadhana.book_points}}
+                                {{sadhana.book_points if sadhana else 0}}
                             </div>
 
                         </div>
@@ -411,7 +411,7 @@
                             </div>
 
                             <div class="point-display" id="cleanPoints">
-                                {{sadhana.clean_points}}
+                                {{sadhana.clean_points if sadhana else 0}}
                             </div>
 
                         </div>
@@ -438,7 +438,7 @@
 
                         <div>
                             <span>Total Points</span>
-                            <h2 id="totalPoints">{{sadhana.total}}</h2>
+                            <h2 id="totalPoints">{{sadhana.total if sadhana else 0}}</h2>
                         </div>
 
                         <div>
