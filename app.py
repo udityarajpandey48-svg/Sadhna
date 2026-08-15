@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for , session
 from flask_sqlalchemy import SQLAlchemy 
 from werkzeug.security import generate_password_hash , check_password_hash
@@ -10,6 +11,99 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
+
+bed_time = request.form.get('tobed')
+wakeup_time = request.form.get('wakeup')
+japacomplete_time = request.form.get('japa')
+
+ammountof_daysleep_in_minuts = int(request.form.get("daysleep", 0) or 0)
+
+present_or_not_mangal_points = request.form.get("mangalarati")
+present_or_not_class_points = request.form.get("morningclass")
+present_or_not_book_points = request.form.get("spbook")
+present_or_not_clean_points = request.form.get("clean")
+
+
+def calculate_bed_points(bed_time):
+    time_value = datetime.strptime(bed_time, "%H:%M").time()
+
+    if time_value <= datetime.strptime("21:30", "%H:%M").time():
+        return 20
+    elif time_value <= datetime.strptime("21:45", "%H:%M").time():
+        return 15
+    elif time_value <= datetime.strptime("22:00", "%H:%M").time():
+        return 10
+    elif time_value <= datetime.strptime("22:15", "%H:%M").time():
+        return 5
+    else:
+        return 0
+
+def calculate_wakeup_points(wakeup_time):
+    time_value = datetime.strptime(wakeup_time, "%H:%M").time()
+
+    if time_value <= datetime.strptime("03:30", "%H:%M").time():
+        return 20
+    elif time_value <= datetime.strptime("03:45", "%H:%M").time():
+        return 15
+    elif time_value <= datetime.strptime("04:00", "%H:%M").time():
+        return 10
+    elif time_value <= datetime.strptime("04:15", "%H:%M").time():
+        return 5
+    else:
+        return 0
+
+def calculate_japacomplete_points(japacomplete_time):
+    time_value = datetime.strptime(japacomplete_time, "%H:%M").time()
+
+    if time_value <= datetime.strptime("07:30", "%H:%M").time():
+        return 20
+    elif time_value <= datetime.strptime("09:00", "%H:%M").time():
+        return 15
+    elif time_value <= datetime.strptime("13:00", "%H:%M").time():
+        return 10
+    elif time_value <= datetime.strptime("15:00", "%H:%M").time():
+        return 5
+    else:
+        return 0
+
+def calculate_daysleep_points(ammountof_daysleep_in_minuts):
+    time_value = ammountof_daysleep_in_minuts
+    if time_value <= 30:
+        return 20
+    elif time_value <= 60 and time_value >30:
+        return 10
+    elif time_value > 60:
+        return 5
+    else:
+        return 0
+
+def calculate_mangalarati_points(value):
+    if value == "yes":
+        return 20
+    else:
+        return 0
+
+
+def calculate_bookreading_points(present_or_not_book_points):
+    if present_or_not_book_points == "completed":
+        return 10
+    else:
+        return 0
+
+def calculate_class_points(present_or_not_class_points):
+    if present_or_not_class_points == "attended":
+        return 20
+    else:
+        return 0
+
+def calculate_clean_points(present_or_not_clean_points):
+    if present_or_not_clean_points == "completed":
+        return 5
+    else:
+        return 0
+
+
+    
 
 class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -116,20 +210,46 @@ def userprofile():
 
 @app.route("/addsadhana", methods=["GET", "POST"])
 def addsadhana():
+
     studentid = session.get("studentid")
 
     if not studentid:
         return redirect(url_for("login"))
 
     if request.method == "POST":
-        bed_points = int(request.form.get("tobed", 0) or 0)
-        wake_points = int(request.form.get("wakeup", 0) or 0)
-        day_sleep_points = int(request.form.get("daysleep", 0) or 0)
-        japa_points = int(request.form.get("japa", 0) or 0)
-        mangal_points = int(request.form.get("mangalarati", 0) or 0)
-        class_points = int(request.form.get("morningclass", 0) or 0)
-        book_points = int(request.form.get("spbook", 0) or 0)
-        clean_points = int(request.form.get("clean", 0) or 0)
+
+        bed_points = calculate_bed_points(
+            request.form.get("tobed")
+        )
+
+        wake_points = calculate_wakeup_points(
+            request.form.get("wakeup")
+        )
+
+        japa_points = calculate_japacomplete_points(
+            request.form.get("japa")
+        )
+
+        day_sleep_points = calculate_daysleep_points(
+            int(request.form.get("daysleep", 0) or 0)
+        )
+
+        mangal_points = calculate_mangalarati_points(
+            request.form.get("mangalarati")
+        )
+
+        class_points = calculate_class_points(
+            request.form.get("morningclass")
+        )
+
+        book_points = calculate_bookreading_points(
+            request.form.get("spbook")
+        )
+
+        clean_points = calculate_clean_points(
+            request.form.get("clean")
+        )
+
 
         sadhana = Sadhana(
             studentid=studentid,
@@ -158,13 +278,6 @@ def addsadhana():
         "addsadhana.html",
         sadhana=sadhana
     )
-
-        
-        
-    studentid = session.get("studentid")
-    sadhana = Sadhana.query.filter_by(studentid=studentid).order_by(studentid).first()
-    return render_template("addsadhana.html" , sadhana=sadhana)
-
 
 
 if __name__ == "__main__":
